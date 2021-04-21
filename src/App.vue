@@ -1,10 +1,25 @@
 <template>
-  <!-- <div id="app">
+
+  <div id="app">
+    <headers />
     <div id="nav">
-    </div> -->
-  <router-view />
-  <!-- </div> -->
+      <router-view />
+    </div>
+    <footers/>
+  </div>
 </template>
+
+<script>
+import footers from "./components/footer";
+import headers from "./components/header";
+export default {
+  name: "App",
+  components: {
+    footers,
+    headers,
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -25,10 +40,13 @@
       color: #42b983;
     }
   }
-body{
-  margin:0px;
-  padding:0px;
-  box-sizing: border-box;
-}
-}
+  body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+
+  }
+
 </style>

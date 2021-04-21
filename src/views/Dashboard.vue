@@ -26,15 +26,14 @@ export default {
 .dashboard{
   display: grid;
   grid-template-columns: 1fr 5fr;
-  background-color: teal;
   height: 100vh;
   width: 100%;
 }
 
 .content{
   background-color: white;
-  border-radius: 15px;
-  margin: 6px 6px 6px 0px;
+  min-height: 100vh;
+  width: auto;
 }
 
 </style>

@@ -27,7 +27,7 @@ const routes = [
       {
         path: "",
         component: () =>
-          import(/* webpackChunkName: "profile" */ "../views/Profile.vue"),
+          import(/* webpackChunkName: "profile" */ "../views/Overview.vue"),
       },
       {
         path: "/profile",
@@ -44,6 +44,21 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "riwayat" */ "../views/Riwayat.vue"),
       },
+      {
+        path: "/tampilan",
+        component: () =>
+          import(/* webpackChunkName: "riwayat" */ "../views/tampilanpelatihan.vue"),
+      },
+      {
+        path: "/tampilan2",
+        component: () =>
+          import(/* webpackChunkName: "riwayat" */ "../views/tampilanpelatihan2.vue"),
+      },
+      {
+        path: "/tampilan3",
+        component: () =>
+          import(/* webpackChunkName: "riwayat" */ "../views/tampilanpelatihan3.vue"),
+      },
     ],
   },
   {
@@ -56,6 +71,16 @@ const routes = [
     name: "test",
     component: () => import("../views/test.vue"),
   },
+  {
+    path: "/registrasi",
+    component: () =>
+      import(/* webpackChunkName: "riwayat" */ "../views/Registrasi.vue"),
+  },
+  {
+    path:"/listPelatihan",
+    component:()=>
+    import(/* webpackChunkName: "riwayat" */ "../views/List.vue"),
+  }
 ];
 
 const router = new VueRouter({
