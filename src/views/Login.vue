@@ -99,7 +99,7 @@ export default {
   padding: 0px;
   margin: 0px;
   background-size: cover;
-  background-color:teal;
+  background-color: teal;
 }
 .boxlogin {
   justify-self: center;
@@ -133,7 +133,7 @@ export default {
   border: 1px solid #00000020;
   border-radius: 50px;
   outline: none;
-  background:turquoise;
+  background: turquoise;
 }
 
 .input::placeholder {

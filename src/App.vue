@@ -1,11 +1,10 @@
 <template>
-
   <div id="app">
     <headers />
     <div id="nav">
       <router-view />
     </div>
-    <footers/>
+    <footers />
   </div>
 </template>
 
@@ -23,14 +22,14 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 #nav {
-  padding: 30px;
+  // padding: 30px;
 
   a {
     font-weight: bold;
@@ -45,8 +44,5 @@ export default {
     padding: 0px;
     box-sizing: border-box;
   }
-
-
-  }
-
+}
 </style>

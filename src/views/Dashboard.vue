@@ -1,39 +1,34 @@
 <template>
-<b-container fluid class="dashboard">
-<sidebar/>
-<div class="content">
-  <router-view/>
-</div>
-</b-container>
-  
-
+  <b-container fluid class="dashboard">
+    <sidebar />
+    <div class="content">
+      <router-view />
+    </div>
+  </b-container>
 </template>
 
 <script>
-
 import sidebar from "../components/sidebar";
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
 
-
-  components:{
-    sidebar
-  }
-  
-}
+  components: {
+    sidebar,
+  },
+};
 </script>
 <style scoped>
-.dashboard{
+.dashboard {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  height: 100vh;
-  width: 100%;
-}
-
-.content{
-  background-color: white;
   min-height: 100vh;
-  width: auto;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+.content {
+  padding: 0;
+}
 </style>

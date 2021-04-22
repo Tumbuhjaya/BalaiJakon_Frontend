@@ -10,14 +10,10 @@
       >
         <b-card
           overlay
-          img-src="https://placekitten.com/380/200"
           img-alt="Card Image"
           text-variant="white"
-          title="Pengajuan Pelatihan"
-          sub-title="Subtitle"
           class="infocard"
-        >
-          <b-card-text> </b-card-text>
+          ><b-card-text> PROPOSAL </b-card-text>
         </b-card>
       </router-link>
       <router-link
@@ -29,14 +25,10 @@
       >
         <b-card
           overlay
-          img-src="https://placekitten.com/380/200"
           img-alt="Card Image"
           text-variant="white"
-          title="Pelatihan Berjalan"
-          sub-title="Subtitle"
           class="infocard"
-        >
-          <b-card-text> </b-card-text>
+          ><b-card-text> LIST PELATIHAN </b-card-text>
         </b-card>
       </router-link>
       <router-link
@@ -48,14 +40,10 @@
       >
         <b-card
           overlay
-          img-src="https://placekitten.com/380/200"
           img-alt="Card Image"
           text-variant="white"
-          title="Pelatihan Selesai"
-          sub-title="Subtitle"
           class="infocard"
-        >
-          <b-card-text> </b-card-text>
+          ><b-card-text> TAMBAH PESERTA </b-card-text>
         </b-card>
       </router-link>
     </b-card-group>
@@ -67,9 +55,8 @@ export default {};
 
 <style scoped>
 .content {
-  width: 100%;
   font-size: 50px;
-  background-color: transparent;
+  background: transparent;
   font-weight: 500;
   margin-top: 50px;
   height: fit-content;
@@ -78,12 +65,26 @@ export default {};
   margin-left: 5px;
   margin-right: 5px;
   display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .infocard {
   border-radius: 45%;
   box-shadow: 1px 1px;
 }
 .side-btn {
+  height: 200px;
+  width: 27%;
   border: none;
+  background: black;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+  background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+  background-color: #79bbff;
+  border-radius: 6px;
 }
 </style>

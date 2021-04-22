@@ -1,17 +1,18 @@
 <template>
   <div>
-    <div class="abc">
-      <router-link
-        to="/pelatihan"
-        active-class="active"
-        exact
-        tag="button"
-        class="side-btn"
-      >
-        <div class="back">KEMBALI</div>
-      </router-link>
-    </div>
-    <b-col lg="6" class="my-1">
+    <div class="topengine">
+      <div class="abc">
+        <router-link
+          to="/pelatihan"
+          active-class="active"
+          exact
+          tag="button"
+          class="side-btn"
+        >
+          <b-button class="back">KEMBALI</b-button>
+        </router-link>
+      </div>
+      <b-col lg="6" class="search my-1">
         <b-form-group
           label="Filter"
           label-for="filter-input"
@@ -29,11 +30,15 @@
             ></b-form-input>
 
             <b-input-group-append>
-              <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+              <b-button :disabled="!filter" @click="filter = ''"
+                >Clear</b-button
+              >
             </b-input-group-append>
           </b-input-group>
         </b-form-group>
       </b-col>
+    </div>
+
     <div>
       <b-table
         hover
@@ -62,7 +67,6 @@
         class="my-0"
       ></b-pagination>
     </b-col>
-    
   </div>
 </template>
 
@@ -107,33 +111,197 @@ export default {
           jumlahPeserta: "15",
           status: "90%",
         },
+        {
+          no: 6,
+          mitra: "Jono",
+          jenisPelatihan: "Operator Alat Berat",
+          jumlahPeserta: "15",
+          status: "70%",
+        },
+        {
+          no: 7,
+          mitra: "Jono",
+          jenisPelatihan: "Konstruksi",
+          jumlahPeserta: "15",
+          status: "50%",
+        },
+        {
+          no: 13,
+          mitra: "Jono",
+          jenisPelatihan: "Pertukangan",
+          jumlahPeserta: "15",
+          status: "20%",
+          _rowVariant: "danger",
+        },
+        {
+          no: 8,
+          mitra: "Jono",
+          jenisPelatihan: "Operator Alat Berat",
+          jumlahPeserta: "15",
+          status: "80%",
+        },
+        {
+          no: 9,
+          mitra: "Jono",
+          jenisPelatihan: "Operator Alat Berat",
+          jumlahPeserta: "15",
+          status: "90%",
+        },
+        {
+          no: 10,
+          mitra: "Rina",
+          jenisPelatihan: "Operator Alat Berat",
+          jumlahPeserta: "15",
+          status: "70%",
+        },
+        {
+          no: 12,
+          mitra: "Rina",
+          jenisPelatihan: "Konstruksi",
+          jumlahPeserta: "15",
+          status: "50%",
+        },
+        {
+          no: 17,
+          mitra: "Rina",
+          jenisPelatihan: "Pertukangan",
+          jumlahPeserta: "15",
+          status: "20%",
+          _rowVariant: "danger",
+        },
+        {
+          no: 20,
+          mitra: "Rina",
+          jenisPelatihan: "Operator Alat Berat",
+          jumlahPeserta: "15",
+          status: "80%",
+        },
+        {
+          no: 35,
+          mitra: "Rina",
+          jenisPelatihan: "Operator Alat Berat",
+          jumlahPeserta: "15",
+          status: "90%",
+        },
       ],
+      fields: [
+        {
+          key: "no",
+          label: "no",
+          sortable: true,
+          class: "text-center",
+        },
+        {
+          key: "mitra",
+          label: "Nama Mitra",
+          sortable: true,
+          sortDirection: "desc",
+        },
+        {
+          key: "jenisPelatihan",
+          label: "Program pelatihan",
+          sortable: true,
+          class: "text-center",
+        },
+        {
+          key: "jumlahPeserta",
+          label: "jumlahPeserta",
+          sortable: true,
+          class: "text-center",
+        },
+        {
+          key: "status",
+          label: "Status",
+          sortable: true,
+          class: "text-center",
+        },
+        // {
+        //   key: 'isActive',
+        //   label: 'Is Active',
+        //   formatter: (value, key, item) => {
+        //     return value ? 'Yes' : 'No'
+        //   },
+        //   sortable: true,
+        //   sortByFormatted: true,
+        //   filterByFormatted: true
+        // },
+        // { key: 'actions', label: 'Actions' }
+      ],
+      totalRows: 1,
+      currentPage: 1,
+      perPage: 5,
+      pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
+      sortBy: "",
+      sortDesc: false,
+      sortDirection: "asc",
+      filter: null,
+      filterOn: [],
+      infoModal: {
+        id: "info-modal",
+        title: "",
+        content: "",
+      },
     };
   },
+  computed: {
+    sortOptions() {
+      // Create an options list from our fields
+      return this.fields
+        .filter((f) => f.sortable)
+        .map((f) => {
+          return { text: f.label, value: f.key };
+        });
+    },
+  },
+  mounted() {
+    // Set the initial number of items
+    this.totalRows = this.items.length;
+  },
+  // methods: {
+  //   info(item, index, button) {
+  //     this.infoModal.title = `Row index: ${index}`
+  //     this.infoModal.content = JSON.stringify(item, null, 2)
+  //     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+  //   },
+  //   resetInfoModal() {
+  //     this.infoModal.title = ''
+  //     this.infoModal.content = ''
+  //   },
+  //   onFiltered(filteredItems) {
+  //     // Trigger pagination to update the number of buttons/pages due to filtering
+  //     this.totalRows = filteredItems.length
+  //     this.currentPage = 1
+  //   }
+  // }
 };
 </script>
 
 <style scoped>
+.topengine {
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 1px;
+}
 .side-btn {
   border: none;
 }
 .abc {
   display: flex;
   justify-content: flex-start;
-  border: none;
+  padding: 0;
+  margin: 0%;
 }
 .back {
   box-shadow: inset 0px 1px 0px 0px #a4e271;
   background: linear-gradient(to bottom, #89c403 5%, #77a809 100%);
   background-color: #89c403;
   border-radius: 6px;
-  display: inline-block;
   cursor: pointer;
   color: #ffffff;
   font-family: Arial;
   font-size: 15px;
   font-weight: bold;
-  padding: 6px 24px;
+  padding: 6px 26px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #528009;
   position: relative;

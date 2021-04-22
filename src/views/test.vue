@@ -1,9 +1,23 @@
 <template>
-  <b-container fluid class="body">
-    <b-row>
+  <b-container fluid class="apps">
+    <b-row class="sidebar-wrapper" :class="{ 'hidden-Sidebar': !showSidebar }">
       <b-col class="title">
-        sidebar
+        <b-row class="sideavatar">
+          <b-img
+            src="https://placekitten.com/300/300"
+            width="80"
+            heightt="80"
+            class="mr-3 rounded-circle img-thumbnail shadow-sm"
+          ></b-img>
+          <div class="sideavatar title">
+            <h4 class="m-0">Budi</h4>
+            <p class="font-weight-normal text-muted mb-0">Mitra Jakon</p>
+          </div>
+        </b-row>
+
         <b-row class="menuitems">
+          <p class="dashboard font-weight-bold px-3 pb-4 mb-0">Dashboard</p>
+          <p class="separator"></p>
           <router-link
             to="/profile"
             active-class="active"
@@ -11,7 +25,9 @@
             tag="button"
             class="side-btn"
           >
-            <div class="link-container">Profile</div>
+            <div class="link-container">
+              <b-icon icon="person-fill" font-scale="1"></b-icon> Profil
+            </div>
           </router-link>
           <router-link
             to="/pelatihan"
@@ -20,7 +36,14 @@
             tag="button"
             class="side-btn"
           >
-            <div class="link-container">Pelatihan</div>
+            <div class="link-container">
+              <b-icon
+                icon="file-earmark"
+                aria-hidden="true"
+                font-scale="1"
+              ></b-icon>
+              Pelatihan
+            </div>
           </router-link>
           <router-link
             to="/riwayat"
@@ -29,7 +52,14 @@
             tag="button"
             class="side-btn"
           >
-            <div class="link-container">Riwayat</div>
+            <div class="link-container">
+              <b-icon
+                icon="clipboard-check"
+                aria-hidden="true"
+                font-scale="1"
+              ></b-icon>
+              Sertifikasi
+            </div>
           </router-link>
           <router-link
             to="/login"
@@ -38,87 +68,209 @@
             tag="button"
             class="side-btn"
           >
-            <div class="link-container">Keluar</div>
+            <div class="link-container">
+              <b-icon icon="power" aria-hidden="true" font-scale="1"></b-icon>
+              Keluar
+            </div>
           </router-link>
         </b-row>
       </b-col>
     </b-row>
+    <b-row>
+      <b-col class="content">
+        <router-view />
+      </b-col>
+    </b-row>
   </b-container>
 </template>
+
+<script>
+import OFFSET from "../views/offset";
+export default {
+  name: "sidebar",
+  data() {
+    return {
+      showSidebar: true,
+      lastScrollPosition: 0,
+      scrollValue: 0,
+    };
+  },
+
+  mounted() {
+    this.lastScrollPosition = window.pageYOffset;
+    window.addEventListener("scroll", this.onScroll);
+    const viewportMeta = document.createElement("meta");
+    viewportMeta.name = "viewport";
+    viewportMeta.content = "width=device-width, initial-scale=1";
+    document.head.appendChild(viewportMeta);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.onScroll);
+  },
+
+  methods: {
+    onScroll() {
+      if (window.pageYOffset < 0) {
+        return;
+      }
+      if (Math.abs(window.pageYOffset - this.lastScrollPosition) < OFFSET) {
+        return;
+      }
+      this.showSidebar = window.pageYOffset < this.lastScrollPosition;
+      this.lastScrollPosition = window.pageYOffset;
+    },
+  },
+};
+</script>
 <style scoped>
 .body {
-  background: teal;
-  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+/* div.content{
+  display: flex;
+  min-height: 100vh;
+  height: 100%;
+  min-width: 100vw;
   width: 100%;
+  margin: 0;
+  padding: 0;
+} */
+/* .content {
+  position:absolute;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 100vw;
+  background-color: chartreuse;
+} */
+.sidebar-wrapper {
+  background: rgba(192, 192, 192, 0.2);
+  height: 100%;
+  min-height: 100vh;
+  width: 17vw;
+  top: 4rem;
+  left: 0;
+  position: fixed;
+  padding: 1px 0 0 16px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: 5px;
+  transform: translate3d(0, 0, 0);
+  transition: 0.1s all ease-out;
 }
-.title {
-  color: white;
-  margin-top: 10px;
-  font-size: 24px;
-  text-align: center;
+/* .sidebar-wrapper {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+} */
+.sidebar-wrapper.hidden-Sidebar {
+  background: rgba(192, 192, 192, 0.2);
+  min-height: 100vh;
+  height: 100%;
+  width: 17vw;
+  padding: 1px 0 0 16px;
+  position: fixed;
+  top: 0;
+  box-shadow: no3px 3px 10px rgba(0, 0, 0, 0.3);
+  transform: translate3d(0, 0, 0);
+  transition: 0.1s all ease-out;
 }
-.menuitems {
+.sideavatar {
+  margin-bottom: 1rem;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.sideavatar .title {
+  padding-top: 15px;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  align-items: center;
+  justify-content: center;
 }
-.menuitems > * {
-  margin-top: 50px;
+.dashboard {
+  text-transform: uppercase;
+  background: rgba(192, 192, 192, 0.4);
+  text-align: center;
+  padding-top: 20px;
+  width: 100%;
+}
+.separator {
+  height: 20px;
+  background: white;
+  width: 100%;
+}
+.menuitems {
+  border: none;
+  color: #aaa;
+  align-items: flex-start;
 }
 .side-btn {
+  display: flex;
+  justify-content: flex-start;
   border: none;
-  padding: 16px 0px;
+  padding: 16px 20px;
   cursor: pointer;
-  font-size: 16px;
-  color: white;
+  font-size: 18px;
+  color: grey;
   background-color: transparent;
+  width: 100%;
+  letter-spacing: 1.2px;
 }
 .side-btn :focus {
   outline: none;
 }
+.side-btn:hover {
+  background: rgba(192, 192, 192, 0.4);
+}
 .side-btn.active {
   position: relative;
-  background-color: white;
-  color: teal;
+  outline: none;
+  background-color: rgba(192, 192, 192, 0.4);
   font-weight: 500;
 }
-.side-btn.active::before {
-  position: absolute;
-  content: '';
-  top: -30px;
-  right: 0;
-  width: 30px;
-  height: 30px;
-  background-color: white;
+.b-icon {
+  margin-right: 30px;
 }
-.side-btn.active::after {
-  position: absolute;
-  content: '';
-  bottom: -30px;
-  right: 0;
-  width: 30px;
-  height: 30px;
-  background-color: white;
+
+.sidebar-wrapper .side-btn.active {
+  background-color: #555;
+  color: white;
 }
-.side-btn.active .link-container::before {
-  position: absolute;
-  top: -60px;
-  right: 0;
-  content:'';
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  background-color: teal;
+
+.sidebar-wrapper .side-btn:hover:not(.active) {
+  background-color: rgba(192, 192, 192, 0.4);
+  color: white;
 }
-.side-btn.active .link-container::after {
-  position: absolute;
-  bottom: -60px;
-  right: 0;
-  content:'';
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  background-color: teal;
-  z-index: 99;
+
+@media screen and (max-width: 700px) {
+  .sidebar-wrapper {
+    width: 100%;
+    height: auto;
+    position: fixed;
+  }
+  .sidebar-wrapper .side-btn {
+    float: left;
+  }
+  div.content {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar-wrapper .side-btn {
+    text-align: center;
+    float: none;
+  }
 }
 </style>

@@ -47,17 +47,23 @@ const routes = [
       {
         path: "/tampilan",
         component: () =>
-          import(/* webpackChunkName: "riwayat" */ "../views/tampilanpelatihan.vue"),
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/tampilanpelatihan.vue"
+          ),
       },
       {
         path: "/tampilan2",
         component: () =>
-          import(/* webpackChunkName: "riwayat" */ "../views/tampilanpelatihan2.vue"),
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/tampilanpelatihan2.vue"
+          ),
       },
       {
         path: "/tampilan3",
         component: () =>
-          import(/* webpackChunkName: "riwayat" */ "../views/tampilanpelatihan3.vue"),
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/tampilanpelatihan3.vue"
+          ),
       },
     ],
   },
@@ -77,10 +83,10 @@ const routes = [
       import(/* webpackChunkName: "riwayat" */ "../views/Registrasi.vue"),
   },
   {
-    path:"/listPelatihan",
-    component:()=>
-    import(/* webpackChunkName: "riwayat" */ "../views/List.vue"),
-  }
+    path: "/listPelatihan",
+    component: () =>
+      import(/* webpackChunkName: "riwayat" */ "../views/List.vue"),
+  },
 ];
 
 const router = new VueRouter({
