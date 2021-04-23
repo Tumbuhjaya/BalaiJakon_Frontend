@@ -19,7 +19,7 @@
           <p class="dashboard font-weight-bold px-3 pb-4 mb-0">Dashboard</p>
           <p class="separator"></p>
           <router-link
-            to="/profile"
+            to="/ProfilMitra"
             active-class="active"
             exact
             tag="button"
@@ -30,7 +30,18 @@
             </div>
           </router-link>
           <router-link
-            to="/pelatihan"
+            to="/proposalMitra"
+            active-class="active"
+            exact
+            tag="button"
+            class="side-btn"
+          >
+            <div class="link-container">
+              <b-icon icon="file-earmark" font-scale="1"></b-icon> Proposal
+            </div>
+          </router-link>
+          <router-link
+            to="/pelatihanMitra"
             active-class="active"
             exact
             tag="button"
@@ -46,7 +57,7 @@
             </div>
           </router-link>
           <router-link
-            to="/riwayat"
+            to="/sertifikasiMitra"
             active-class="active"
             exact
             tag="button"
@@ -87,7 +98,7 @@
 <script>
 import OFFSET from "../views/offset";
 export default {
-  name: "sidebar",
+  name: "sidebarMitra",
   data() {
     return {
       showSidebar: true,

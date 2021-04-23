@@ -2,7 +2,7 @@
   <div>
     <div class="abc">
       <router-link
-        to="/pelatihan"
+        to="/proposalMitra"
         active-class="active"
         exact
         tag="button"

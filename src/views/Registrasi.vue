@@ -11,7 +11,7 @@
             <div class="box2 px-3 md-4 mb-4">
               <b-form-input
                 type="text"
-                placeholder="Username"
+                placeholder="Email"
                 tabindex="15"
                 class="input"
               ></b-form-input>
@@ -23,7 +23,7 @@
               ></b-form-input>
               <b-form-input
                 type="text"
-                placeholder="Nama"
+                placeholder="Nama Instansi"
                 tabindex="15"
                 class="input"
               ></b-form-input>
@@ -31,7 +31,7 @@
             <div class="box2 px-3 md-4 mb-4">
               <b-form-input
                 type="text"
-                placeholder="Jenis Kelamin"
+                placeholder="Contact Person"
                 tabindex="15"
                 class="input"
               ></b-form-input>
@@ -95,61 +95,6 @@
 </template>
 <script>
 // export default {
-//   name: "register",
-//   data() {
-//     return {
-//       nama: "",
-//       kelamin: "",
-//       alamat: "",
-//       tanggalLahir:"",
-//       golonganDarah:"",
-//       Spesialisasi: "",
-//       noHp: "",
-//       noDarurat:"",
-//       alamat2:"",
-//       valid: true,
-//       radioGroup: null,
-//       date: null,
-//       menu: false,
-//     };
-//   },
-//   components:{
-//     navbar,
-//   },
-
-//   methods: {
-//     save(date) {
-//       this.$refs.menu.save(date);
-//     },
-//     register() {
-//       let vm = this;
-//       axios
-//         .post(ipBackEnd + "user/register", {
-//           nama: vm.nama,
-//           alamat: vm.alamat,
-//           kelamin: vm.kelamin,
-//           golonganDarah: vm.golonganDarah,
-//           role: dokter,
-//           tanggal: vm.date,
-//         })
-//         .then(function(response) {
-//           // console.log(response);
-//           // if(response.data.message){
-//           console.log(vm);
-//           vm.notif = response.data.message;
-//           vm.$router.push("/dashboard");
-//           // }
-//         })
-//         .catch(function(error) {
-//           console.log(error);
-//         });
-//     },
-//   },
-//   watch: {
-//     menu(val) {
-//       val && setTimeout(() => (this.$refs.picker.activePicker = "YEAR"));
-//     },
-//   },
 // };
 </script>
 <style scoped>

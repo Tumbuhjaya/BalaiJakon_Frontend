@@ -13,7 +13,7 @@
           <b-col md="6" class="boxlogin">
             <b-card-body>
               <b-card-title class="c-title text-center md-4">
-                LOGIN MITRA
+                LOGIN
               </b-card-title>
               <div class="box2 px-3 md-4 mb-4">
                 <b-form-input
@@ -40,12 +40,21 @@
               </div>
               <div class="box button mb-3">
                 <center>
-                  <b-button variant="primary" class="text-uppercase mr-2 mb-4"
-                    >Login</b-button
-                  >
-                  <b-button variant="primary" class="text-uppercase ml-2 mb-4"
-                    >Reset
-                  </b-button>
+                  <div class="text-center mb-4 mt-4">
+                    <router-link
+                      to="/dashboard"
+                      active-class="active"
+                      exact
+                      tag="button"
+                      class="register-akun"
+                    >
+                      <b-button
+                        variant="primary"
+                        class="text-uppercase mr-2 mb-4"
+                        >Login</b-button
+                      >
+                    </router-link>
+                  </div>
                 </center>
               </div>
               <div class="text-center md-4 mt-4">
@@ -54,7 +63,15 @@
               </div>
               <div class="text-center mb-4 mt-4">
                 Belum memiliki akun?
-                <a href="#" class="register-akun">Daftar disini</a>
+                <router-link
+                  to="/Registrasi"
+                  active-class="active"
+                  exact
+                  tag="button"
+                  class="register-akun"
+                >
+                  <div>Daftar disini</div>
+                </router-link>
               </div>
             </b-card-body>
           </b-col>
@@ -159,7 +176,12 @@ export default {
   font-weight: bold;
   letter-spacing: 0.1rem;
   transition: 0.5s;
-  padding: 12px;
+  padding: 6px 26px;
+}
+.register-akun {
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 .register-akun,
 .forget-akun {

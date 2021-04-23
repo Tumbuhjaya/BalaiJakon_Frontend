@@ -70,7 +70,7 @@ export default {
 .navbar {
   height: 60px;
   width: 100vw;
-  background: hsl(200, 50%, 50%);
+  background: white;
   position: fixed;
   box-shadow: 0 2px 15px rgba(71, 120, 120, 0.5);
   transform: translate3d(0, 0, 0);

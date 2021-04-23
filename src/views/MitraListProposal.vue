@@ -3,7 +3,7 @@
     <div class="topengine">
       <div class="abc">
         <router-link
-          to="/pelatihan"
+          to="/proposalMitra"
           active-class="active"
           exact
           tag="button"
@@ -55,18 +55,45 @@
         show-empty
         small
         @filtered="onFiltered"
-      ></b-table>
+      >
+        <template #cell(actions)>
+          <b-button size="sm" variant="secondary" class="mr-1">
+            Lihat Detail
+          </b-button>
+        </template></b-table
+      >
     </div>
-    <b-col sm="7" md="6" class="my-1">
-      <b-pagination
-        v-model="currentPage"
-        :total-rows="totalRows"
-        :per-page="perPage"
-        align="fill"
-        size="sm"
-        class="my-0"
-      ></b-pagination>
-    </b-col>
+    <div class="box3">
+      <b-col sm="5" md="6" class="my-1">
+        <b-form-group
+          label="Per page"
+          label-for="per-page-select"
+          label-cols-sm="6"
+          label-cols-md="4"
+          label-cols-lg="3"
+          label-align-sm="right"
+          label-size="sm"
+          class="mb-0"
+        >
+          <b-form-select
+            id="per-page-select"
+            v-model="perPage"
+            :options="pageOptions"
+            size="sm"
+          ></b-form-select>
+        </b-form-group>
+      </b-col>
+      <b-col sm="7" md="6" class="my-1">
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="totalRows"
+          :per-page="perPage"
+          align="fill"
+          size="sm"
+          class="my-0"
+        ></b-pagination>
+      </b-col>
+    </div>
   </div>
 </template>
 
@@ -81,20 +108,23 @@ export default {
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
           status: "70%",
+          pelatih: "aria",
         },
         {
           no: 2,
           mitra: "Budi",
           jenisPelatihan: "Konstruksi",
           jumlahPeserta: "15",
-          status: "50%",
+          status: "Pending",
+          pelatih: "Indra",
         },
         {
           no: 3,
           mitra: "Budi",
           jenisPelatihan: "Pertukangan",
           jumlahPeserta: "15",
-          status: "20%",
+          status: "Ditolak",
+          pelatih: "Budi",
           _rowVariant: "danger",
         },
         {
@@ -103,6 +133,7 @@ export default {
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
           status: "80%",
+          pelatih: "Rini",
         },
         {
           no: 5,
@@ -110,78 +141,89 @@ export default {
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
           status: "90%",
+          pelatih: "roni",
         },
         {
           no: 6,
-          mitra: "Jono",
+          mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
           status: "70%",
+          pelatih: "aria",
         },
         {
           no: 7,
-          mitra: "Jono",
+          mitra: "Budi",
           jenisPelatihan: "Konstruksi",
           jumlahPeserta: "15",
-          status: "50%",
+          status: "Pending",
+          pelatih: "Indra",
         },
         {
           no: 13,
-          mitra: "Jono",
+          mitra: "Budi",
           jenisPelatihan: "Pertukangan",
           jumlahPeserta: "15",
-          status: "20%",
+          status: "Ditolak",
+          pelatih: "Budi",
           _rowVariant: "danger",
         },
         {
           no: 8,
-          mitra: "Jono",
+          mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
           status: "80%",
+          pelatih: "Rini",
         },
         {
           no: 9,
-          mitra: "Jono",
+          mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
           status: "90%",
+          pelatih: "roni",
         },
         {
           no: 10,
-          mitra: "Rina",
+          mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
           status: "70%",
+          pelatih: "aria",
         },
         {
           no: 12,
-          mitra: "Rina",
+          mitra: "Budi",
           jenisPelatihan: "Konstruksi",
           jumlahPeserta: "15",
-          status: "50%",
+          status: "Pending",
+          pelatih: "Indra",
         },
         {
           no: 17,
-          mitra: "Rina",
+          mitra: "Budi",
           jenisPelatihan: "Pertukangan",
           jumlahPeserta: "15",
-          status: "20%",
+          status: "Ditolak",
+          pelatih: "Budi",
           _rowVariant: "danger",
         },
         {
           no: 20,
-          mitra: "Rina",
+          mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
           status: "80%",
+          pelatih: "Rini",
         },
         {
           no: 35,
-          mitra: "Rina",
+          mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
           status: "90%",
+          pelatih: "roni",
         },
       ],
       fields: [
@@ -216,6 +258,12 @@ export default {
           class: "text-center",
         },
         // {
+        //   key:"pelatih",
+        //   label:"pelatih",
+        //   sortable:true,
+        //   class:"text-center"
+        // },
+        // {
         //   key: 'isActive',
         //   label: 'Is Active',
         //   formatter: (value, key, item) => {
@@ -225,7 +273,7 @@ export default {
         //   sortByFormatted: true,
         //   filterByFormatted: true
         // },
-        // { key: 'actions', label: 'Actions' }
+        { key: "actions", label: "Actions" },
       ],
       totalRows: 1,
       currentPage: 1,
@@ -290,6 +338,10 @@ export default {
   justify-content: flex-start;
   padding: 0;
   margin: 0%;
+}
+.box3 {
+  display: flex;
+  justify-content: space-between;
 }
 .back {
   box-shadow: inset 0px 1px 0px 0px #a4e271;

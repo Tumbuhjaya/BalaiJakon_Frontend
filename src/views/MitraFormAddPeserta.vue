@@ -2,7 +2,7 @@
   <div>
     <div class="abc">
       <router-link
-        to="/pelatihan"
+        to="/ProposalMitra"
         active-class="active"
         exact
         tag="button"
@@ -62,7 +62,15 @@
                     ></b-form-input>
                   </b-form-group>
                 </div>
-
+                <div class="box2 px-3 md-4 mb-4">
+                  <b-form-group label="No Kontak">
+                    <b-form-input
+                      type="email"
+                      placeholder="Masukkan No Kontak"
+                      required
+                    ></b-form-input>
+                  </b-form-group>
+                </div>
                 <div class="box2 px-3 md-4 mb-4">
                   <b-form-group label="Kelurahan">
                     <b-form-select
@@ -99,7 +107,7 @@
                       variant="primary"
                       class="text-uppercase mr-2 mb-4"
                     >
-                      UBAH</b-button
+                      RESET</b-button
                     >
                     <b-button
                       variant="primary"

@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import sidebar from "../components/sidebar";
+import sidebar from "../components/sidebarMitra";
 export default {
-  name: "Dashboard",
+  name: "DashboardMitra",
 
   components: {
     sidebar,

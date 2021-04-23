@@ -6,15 +6,16 @@
         <b-col md="" class="boxlogin">
           <b-card-body>
             <b-card-title class="c-title text-center md-4">
-              PROFIL MITRA
+              PROFIL PESERTA
             </b-card-title>
             <div class="box2 px-3 md-4 mb-4">
               <b-form-group label="Email">
                 <b-form-input
                   type="email"
-                  placeholder="Budi@BUDIBUDI.COM"
+                  placeholder="Brian@gmail.COM"
                   required
                   disabled="true"
+                  class="input"
                 ></b-form-input>
               </b-form-group>
               <b-form-group label="Password">
@@ -23,6 +24,7 @@
                   placeholder="**********"
                   required
                   disabled="true"
+                  class="input"
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -30,38 +32,72 @@
               <b-form-group label="Nama Depan">
                 <b-form-input
                   type="text"
-                  placeholder="Budi"
+                  placeholder="Brian"
                   required
                   disabled="true"
+                  class="input"
                 ></b-form-input>
               </b-form-group>
               <b-form-group label="Nama Belakang">
                 <b-form-input
                   type="email"
-                  placeholder="Budi"
+                  placeholder="Brian"
                   required
                   disabled="true"
+                  class="input"
                 ></b-form-input>
               </b-form-group>
             </div>
             <div class="box2 px-3 md-4 mb-4">
-              <b-form-group label="Alamat">
+              <b-form-group label="Tanggal Lahir">
                 <b-form-input
-                  type="email"
-                  placeholder="jl.Budi Budi"
+                  type="text"
+                  placeholder="20-04-1992"
                   required
                   disabled="true"
+                  class="input"
+                ></b-form-input>
+              </b-form-group>
+              <b-form-group label="Jenis Kelamin">
+                <b-form-input
+                  type="email"
+                  placeholder="Laki-laki"
+                  required
+                  disabled="true"
+                  class="input"
                 ></b-form-input>
               </b-form-group>
             </div>
-
+            <div class="box1 px-3 md-4 mb-4">
+              <b-form-group label="Alamat">
+                <b-form-input
+                  type="email"
+                  placeholder="jl.Setia Budi"
+                  required
+                  disabled="true"
+                  class="input2"
+                ></b-form-input>
+              </b-form-group>
+            </div>
+            <div class="box1 px-3 md-4 mb-4">
+              <b-form-group label="No Kontak">
+                <b-form-input
+                  type="email"
+                  placeholder=" +62 8500000001"
+                  required
+                  disabled="true"
+                  class="input2"
+                ></b-form-input>
+              </b-form-group>
+            </div>
             <div class="box2 px-3 md-4 mb-4">
               <b-form-group label="Kelurahan">
                 <b-form-input
                   type="email"
-                  placeholder="Gunungpati"
+                  placeholder="Sukorejo"
                   required
                   disabled="true"
+                  class="input"
                 ></b-form-input>
               </b-form-group>
               <b-form-group label="Kecamatan">
@@ -70,6 +106,7 @@
                   placeholder="Gunungpati"
                   required
                   disabled="true"
+                  class="input"
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -80,6 +117,7 @@
                   placeholder=" Kota Semarang"
                   required
                   disabled="true"
+                  class="input"
                 ></b-form-input>
               </b-form-group>
               <b-form-group label="Propinsi">
@@ -88,6 +126,7 @@
                   placeholder="Jawa Tengah"
                   required
                   disabled="true"
+                  class="input"
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -173,20 +212,38 @@ b-form-input {
   color: darkgray;
   font-weight: 500;
 }
-.box2 {
+.box1 {
   position: relative;
-  justify-self: unset;
   text-align: start;
+  letter-spacing: 1px;
+}
+.box2 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-between;
+  text-align: start;
+  letter-spacing: 1px;
 }
 .input {
-  width: 100%;
-  height: 45px;
-  padding-left: 40px;
+  width: 50vh;
+  height: 50px;
+  padding-left: 30px;
   margin-bottom: 20px;
   box-sizing: border-box;
   box-shadow: turquoise;
-  border: 1px solid #00000020;
-  border-radius: 50px;
+  border: 3px solid #00000020;
+  outline: none;
+  background: transparent;
+}
+.input2 {
+  width: 100%;
+  height: 50px;
+  padding-left: 30px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  box-shadow: turquoise;
+  border: 3px solid #00000020;
   outline: none;
   background: transparent;
 }
