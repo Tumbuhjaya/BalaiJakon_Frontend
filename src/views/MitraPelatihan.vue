@@ -58,16 +58,15 @@
       >
         <template #cell(actions)>
           <router-link
-          to="/MitraDetailPelatihan"
-          active-class="active"
-          exact
-          tag="button"
-          class="side-btn"
-        ><b-button size="sm" variant="secondary" class="mr-1">
-            Lihat Detail
-          </b-button>
-        </router-link>
-          
+            to="/MitraDetailPelatihan"
+            active-class="active"
+            exact
+            tag="button"
+            class="side-btn"
+            ><b-button size="sm" variant="secondary" class="mr-1">
+              Lihat Detail
+            </b-button>
+          </router-link>
         </template></b-table
       >
     </div>
@@ -340,6 +339,7 @@ export default {
 }
 .side-btn {
   border: none;
+  background-color: transparent;
 }
 .abc {
   display: flex;

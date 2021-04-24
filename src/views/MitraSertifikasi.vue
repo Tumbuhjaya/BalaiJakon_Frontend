@@ -2,15 +2,15 @@
   <div>
     <div class="topengine">
       <div class="abc">
-        <!-- <router-link
-          to="/pelatihan"
+        <router-link
+          to="/"
           active-class="active"
           exact
           tag="button"
           class="side-btn"
         >
           <b-button class="back">KEMBALI</b-button>
-        </router-link> -->
+        </router-link>
       </div>
       <b-col lg="6" class="search my-1">
         <b-form-group
@@ -57,9 +57,16 @@
         @filtered="onFiltered"
       >
         <template #cell(actions)>
-          <b-button size="sm" variant="secondary" class="mr-1">
-            Lihat Detail
-          </b-button>
+         <router-link
+            to="/MitraDetailSertifikasi"
+            active-class="active"
+            exact
+            tag="button"
+            class="side-btn"
+            ><b-button size="sm" variant="secondary" class="mr-1">
+              Lihat Detail
+            </b-button>
+          </router-link>
         </template></b-table
       >
     </div>
@@ -332,6 +339,7 @@ export default {
 }
 .side-btn {
   border: none;
+  background-color: transparent;
 }
 .abc {
   display: flex;

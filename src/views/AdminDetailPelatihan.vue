@@ -3,7 +3,7 @@
     <div class="topengine">
       <div class="abc">
         <router-link
-          to="/pelatihanMitra"
+          to="/AdminListPelatihan"
           active-class="active"
           exact
           tag="button"

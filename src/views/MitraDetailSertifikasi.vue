@@ -3,7 +3,7 @@
     <div class="topengine">
       <div class="abc">
         <router-link
-          to="/pelatihanMitra"
+          to="/sertifikasiMitra"
           active-class="active"
           exact
           tag="button"
@@ -20,7 +20,7 @@
           <b-col md="" class="boxlogin">
             <b-card-body>
               <b-card-title class="c-title text-center md-4">
-                DETAIL PELATIHAN
+                DETAIL SERTIFIKASI
               </b-card-title>
               <div class="box2 px-3 md-4 mb-4">
                 <b-form-group label="Mitra">
@@ -63,7 +63,7 @@
                 </b-form-group>
               </div>
               <div class="box2 px-3 md-4 mb-4">
-                <b-form-group label="Jenis Pelatihan">
+                <b-form-group label="Jenis Sertifikasi">
                   <b-form-input
                     type="email"
                     placeholder="Operator Alat Berat"
@@ -135,21 +135,21 @@ export default {
         {
           no: 1,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Rian",
           kategori: "pemula",
         },
         {
           no: 2,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Adi",
           kategori: "pemula",
         },
         {
           no: 3,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Rindaman",
           kategori: "pemula",
           _rowVariant: "danger",
@@ -157,35 +157,35 @@ export default {
         {
           no: 4,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Tejo",
           kategori: "pemula",
         },
         {
           no: 5,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Darmawan",
           kategori: "pemula",
         },
         {
           no: 6,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Khaliyah",
           kategori: "pemula",
         },
         {
           no: 7,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Salim",
           kategori: "pemula",
         },
         {
           no: 8,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Kiryu",
           kategori: "pemula",
           _rowVariant: "danger",
@@ -193,35 +193,35 @@ export default {
         {
           no: 9,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Jamingan",
           kategori: "pemula",
         },
         {
           no: 10,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Stefanus",
           kategori: "pemula",
         },
         {
           no: 11,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Ramlan",
           kategori: "pemula",
         },
         {
           no: 12,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Setyoko",
           kategori: "pemula",
         },
         {
           no: 13,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Asri",
           kategori: "pemula",
           _rowVariant: "danger",
@@ -229,14 +229,14 @@ export default {
         {
           no: 14,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Felicia",
           kategori: "pemula",
         },
         {
           no: 15,
           mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
+          jenisSertifikasi: "Operator Alat Berat",
           namaPeserta: "Imron",
           kategori: "pemula",
         },
@@ -255,8 +255,8 @@ export default {
           sortDirection: "desc",
         },
         {
-          key: "programPelatihan",
-          label: "Program Pelatihan",
+          key: "jenisSertifikasi",
+          label: "Program Sertifikasi",
           sortable: true,
           class: "text-center",
         },

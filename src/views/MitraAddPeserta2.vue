@@ -340,6 +340,7 @@ export default {
 }
 .side-btn {
   border: none;
+  background-color: transparent;
 }
 .abc {
   display: flex;

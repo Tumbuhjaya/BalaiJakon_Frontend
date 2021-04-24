@@ -57,14 +57,12 @@
         @filtered="onFiltered"
       >
         <template #cell(actions)>
-          <b-button size="sm" variant="primary" class="mr-1">
-            Daftar
-          </b-button>
-          <b-button size="sm" variant="secondary" class="mr-1">
+          <b-button size="sm" variant="primary" class="mr-1"> Daftar </b-button>
+          <!-- <b-button size="sm" variant="secondary" class="mr-1">
             Lihat Detail
-          </b-button>
+          </b-button> -->
         </template>
-        </b-table>
+      </b-table>
     </div>
     <div class="box3">
       <b-col sm="5" md="6" class="my-1">
@@ -110,7 +108,7 @@ export default {
           mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "aria",
         },
         {
@@ -118,7 +116,7 @@ export default {
           mitra: "Budi",
           jenisPelatihan: "Konstruksi",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "Indra",
         },
         {
@@ -126,7 +124,7 @@ export default {
           mitra: "Budi",
           jenisPelatihan: "Pertukangan",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "jono",
           _rowVariant: "danger",
         },
@@ -135,7 +133,7 @@ export default {
           mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "Rini",
         },
         {
@@ -143,7 +141,7 @@ export default {
           mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "roni",
         },
         {
@@ -151,7 +149,7 @@ export default {
           mitra: "Jono",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "aria",
         },
         {
@@ -159,7 +157,7 @@ export default {
           mitra: "Jono",
           jenisPelatihan: "Konstruksi",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "Indra",
         },
         {
@@ -167,7 +165,7 @@ export default {
           mitra: "Jono",
           jenisPelatihan: "Pertukangan",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "jono",
           _rowVariant: "danger",
         },
@@ -176,7 +174,7 @@ export default {
           mitra: "Jono",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "Rini",
         },
         {
@@ -184,7 +182,7 @@ export default {
           mitra: "Jono",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "roni",
         },
         {
@@ -192,7 +190,7 @@ export default {
           mitra: "Rina",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "aria",
         },
         {
@@ -200,7 +198,7 @@ export default {
           mitra: "Rina",
           jenisPelatihan: "Konstruksi",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "Indra",
         },
         {
@@ -208,7 +206,7 @@ export default {
           mitra: "Rina",
           jenisPelatihan: "Pertukangan",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "jono",
           _rowVariant: "danger",
         },
@@ -217,7 +215,7 @@ export default {
           mitra: "Rina",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "Rini",
         },
         {
@@ -225,7 +223,7 @@ export default {
           mitra: "Rina",
           jenisPelatihan: "Operator Alat Berat",
           jumlahPeserta: "15",
-          kategori:"umum",
+          kategori: "umum",
           pelatih: "roni",
         },
       ],

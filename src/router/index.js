@@ -120,6 +120,13 @@ const routes = [
             /* webpackChunkName: "riwayat" */ "../views/MitraDetailPelatihan.vue"
           ),
       },
+      {
+        path: "/MitraDetailSertifikasi",
+        component: () =>
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/MitraDetailSertifikasi.vue"
+          ),
+      },
     ],
   },
   {
@@ -180,6 +187,20 @@ const routes = [
             /* webpackChunkName: "riwayat" */ "../views/AdminListSertifikasi.vue"
           ),
       },
+      {
+        path: "/AdminDetailSertifikasi",
+        component: () =>
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/AdminDetailSertifikasi.vue"
+          ),
+      },
+      {
+        path: "/AdminDetailPelatihan",
+        component: () =>
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/AdminDetailPelatihan.vue"
+          ),
+      },
     ],
   },
   {
@@ -194,7 +215,9 @@ const routes = [
       {
         path: "/ProfilPeserta",
         component: () =>
-          import(/* webpackChunkName: "profile" */ "../views/PesertaProfil.vue"),
+          import(
+            /* webpackChunkName: "profile" */ "../views/PesertaProfil.vue"
+          ),
       },
       {
         path: "/PesertaPelatihan",

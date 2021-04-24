@@ -192,6 +192,10 @@
   background: transparent;
   letter-spacing: 1px;
 }
+.side-btn{
+  outline: none;
+  background-color: transparent;
+}
 
 .input::placeholder {
   color: black;
