@@ -55,7 +55,7 @@
         show-empty
         small
         @filtered="onFiltered"
-      >
+      > 
         <template #cell(actions)>
           <b-button size="sm" variant="primary" class="mr-1"> Daftar </b-button>
           <!-- <b-button size="sm" variant="secondary" class="mr-1">

@@ -196,7 +196,6 @@
   outline: none;
   background-color: transparent;
 }
-
 .input::placeholder {
   color: black;
   padding-left: 0px;
