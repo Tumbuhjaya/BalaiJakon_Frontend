@@ -1,7 +1,7 @@
 <template>
-  <footer class="footer">
+  <div class="footer col-lg-12 col-xl-12">
     Copyright @ 2021 | DPU Bina Marga dan Cipta Karya. All rights reserved.
-  </footer>
+  </div>
 </template>
 
 <script>

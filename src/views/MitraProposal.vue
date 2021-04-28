@@ -31,7 +31,7 @@
           ><b-card-text> LIST PROPOSAL PELATIHAN</b-card-text>
         </b-card>
       </router-link>
-      <router-link
+      <!-- <router-link
         to="/addPeserta"
         active-class="active"
         exact
@@ -44,8 +44,8 @@
           text-variant="white"
           class="infocard"
           ><b-card-text> TAMBAH PESERTA PELATIHAN</b-card-text>
-        </b-card>
-      </router-link>
+        </b-card> -->
+      <!-- </router-link> -->
     </b-card-group>
     <b-card-group deck class="boxinfo">
       <router-link
@@ -78,7 +78,7 @@
           ><b-card-text> LIST PROPOSAL SERTIFIKASI</b-card-text>
         </b-card>
       </router-link>
-      <router-link
+      <!-- <router-link
         to="/addPeserta"
         active-class="active"
         exact
@@ -92,7 +92,7 @@
           class="infocard"
           ><b-card-text> TAMBAH PESERTA SERTIFIKASI</b-card-text>
         </b-card>
-      </router-link>
+      </router-link> -->
     </b-card-group>
   </div>
 </template>
@@ -115,7 +115,7 @@ export default {};
   margin-right: 5px;
   margin-bottom: 50px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding-left: 20px;
   padding-right: 20px;
 }

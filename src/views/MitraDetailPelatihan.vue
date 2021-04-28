@@ -12,6 +12,17 @@
           <b-button class="back">KEMBALI</b-button>
         </router-link>
       </div>
+      <div>
+        <router-link
+          to="/formPeserta"
+          active-class="active"
+          exact
+          tag="button"
+          class="side-btn"
+        >
+          <b-button class="back">TAMBAH PESERTA</b-button>
+        </router-link>
+      </div>
     </div>
     <b-row class="row px-3">
       <b-card class="form-box col-lg-10 col-xl-9 flex-row mx-auto px-0">
@@ -344,13 +355,14 @@ export default {
   display: flex;
   justify-content: space-between;
   letter-spacing: 1px;
+  /* background-color: red; */
 }
 .side-btn {
   border: none;
 }
 .abc {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   padding: 0;
   margin: 0%;
 }

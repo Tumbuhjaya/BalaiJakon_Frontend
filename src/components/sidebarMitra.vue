@@ -80,7 +80,12 @@
             class="side-btn"
           >
             <div class="link-container">
-              <b-icon icon="power" aria-hidden="true" font-scale="1"></b-icon>
+              <b-icon
+                icon="power"
+                aria-hidden="true"
+                font-scale="1"
+                @click="logout()"
+              ></b-icon>
               Keluar
             </div>
           </router-link>
@@ -130,6 +135,11 @@ export default {
       }
       this.showSidebar = window.pageYOffset < this.lastScrollPosition;
       this.lastScrollPosition = window.pageYOffset;
+    },
+    logout() {
+      let vm = this;
+      localStorage.clear();
+      vm.$router.push({ path: "/login" });
     },
   },
 };

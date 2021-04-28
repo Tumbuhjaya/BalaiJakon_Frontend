@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../views/Login.vue";
 import DashboardMitra from "../views/DashboardMitra.vue";
 import DashboardAdmin from "../views/DashboardAdmin.vue";
 import DashboardPeserta from "../views/DashboardPeserta.vue";
@@ -9,16 +9,13 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home,
   },
   {
     path: "/about",
     name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
@@ -58,28 +55,28 @@ const routes = [
           ),
       },
       {
-        path: "/ListProposal",
+        path: "/listProposal",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/MitraListProposal.vue"
           ),
       },
       {
-        path: "/ListProposal2",
+        path: "/listProposal2",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/MitraListProposal2.vue"
           ),
       },
       {
-        path: "/FormProposal",
+        path: "/formProposal",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/MitraFormProposal.vue"
           ),
       },
       {
-        path: "/FormProposal2",
+        path: "/formProposal2",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/MitraFormProposal2.vue"
@@ -100,28 +97,28 @@ const routes = [
           ),
       },
       {
-        path: "/ProposalMitra",
+        path: "/proposalMitra",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/MitraProposal.vue"
           ),
       },
       {
-        path: "/FormPeserta",
+        path: "/formPeserta",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/MitraFormAddPeserta.vue"
           ),
       },
       {
-        path: "/MitraDetailPelatihan",
+        path: "/mitraDetailPelatihan",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/MitraDetailPelatihan.vue"
           ),
       },
       {
-        path: "/MitraDetailSertifikasi",
+        path: "/mitraDetailSertifikasi",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/MitraDetailSertifikasi.vue"
@@ -139,63 +136,63 @@ const routes = [
           import(/* webpackChunkName: "profile" */ "../views/Overview.vue"),
       },
       {
-        path: "/ListMitra",
+        path: "/listMitra",
         component: () =>
           import(
             /* webpackChunkName: "profile" */ "../views/AdminListMitra.vue"
           ),
       },
       {
-        path: "/AdminproposalMitra",
+        path: "/adminProposalMitra",
         component: () =>
           import(
             /* webpackChunkName: "pelatihan" */ "../views/AdminProposalMitra.vue"
           ),
       },
       {
-        path: "/AdminProposalPelatihan",
+        path: "/adminProposalPelatihan",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/AdminProposalPelatihan.vue"
           ),
       },
       {
-        path: "/AdminProposalSertifikasi",
+        path: "/adminProposalSertifikasi",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/AdminProposalSeritifikasi.vue"
           ),
       },
       {
-        path: "/AdminProposal",
+        path: "/adminProposal",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/AdminProposal.vue"
           ),
       },
       {
-        path: "/AdminListPelatihan",
+        path: "/adminListPelatihan",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/AdminListPelatihan.vue"
           ),
       },
       {
-        path: "/AdminListSertifikasi",
+        path: "/adminListSertifikasi",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/AdminListSertifikasi.vue"
           ),
       },
       {
-        path: "/AdminDetailSertifikasi",
+        path: "/adminDetailSertifikasi",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/AdminDetailSertifikasi.vue"
           ),
       },
       {
-        path: "/AdminDetailPelatihan",
+        path: "/adminDetailPelatihan",
         component: () =>
           import(
             /* webpackChunkName: "riwayat" */ "../views/AdminDetailPelatihan.vue"
@@ -213,52 +210,94 @@ const routes = [
           import(/* webpackChunkName: "profile" */ "../views/Overview.vue"),
       },
       {
-        path: "/ProfilPeserta",
+        path: "/profilPeserta",
         component: () =>
           import(
             /* webpackChunkName: "profile" */ "../views/PesertaProfil.vue"
           ),
       },
       {
-        path: "/PesertaPelatihan",
+        path: "/pesertaListPelatihan",
         component: () =>
           import(
             /* webpackChunkName: "pelatihan" */ "../views/PersertaListPelatihan.vue"
           ),
       },
       {
-        path: "/PesertaSertifikasi",
+        path: "/pelatihanBerjalan",
         component: () =>
           import(
-            /* webpackChunkName: "riwayat" */ "../views/PersertaListSerifikasi.vue"
+            /* webpackChunkName: "pelatihan" */ "../views/PesertaListPelatihan3.vue"
           ),
       },
       {
-        path: "/ListProposal",
+        path: "/pelatihanSelesai",
         component: () =>
           import(
-            /* webpackChunkName: "riwayat" */ "../views/MitraListProposal.vue"
+            /* webpackChunkName: "pelatihan" */ "../views/PersertaListPelatihan2.vue"
           ),
       },
       {
-        path: "/FormProposal",
+        path: "/pesertaListSertifikasi",
         component: () =>
           import(
-            /* webpackChunkName: "riwayat" */ "../views/MitraFormProposal.vue"
+            /* webpackChunkName: "riwayat" */ "../views/PersertaListSertifikasi.vue"
           ),
       },
       {
-        path: "/pelatihanMitra",
+        path: "/sertifikasiBerjalan",
         component: () =>
           import(
-            /* webpackChunkName: "riwayat" */ "../views/MitraPelatihan.vue"
+            /* webpackChunkName: "riwayat" */ "../views/PersertaListSertifikasi3.vue"
           ),
       },
       {
-        path: "/ProposalMitra",
+        path: "/sertifikasiSelesai",
         component: () =>
           import(
-            /* webpackChunkName: "riwayat" */ "../views/MitraProposal.vue"
+            /* webpackChunkName: "riwayat" */ "../views/PesertaListSertifikasi2.vue"
+          ),
+      },
+      {
+        path: "/pesertaListLowongan",
+        component: () =>
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/PesertaListLowongan.vue"
+          ),
+      },
+      {
+        path: "/pesertaPelatihan",
+        component: () =>
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/PesertaPelatihan.vue"
+          ),
+      },
+      {
+        path: "/pesertaSertifikasi",
+        component: () =>
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/PesertaSerifikasi.vue"
+          ),
+      },
+      {
+        path: "/pesertaLowongan",
+        component: () =>
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/PesertaLowongan.vue"
+          ),
+      },
+      {
+        path: "/lowonganBerjalan",
+        component: () =>
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/PesertaListLowongan3.vue"
+          ),
+      },
+      {
+        path: "/pesertaInterview",
+        component: () =>
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/PesertaListLowongan2.vue"
           ),
       },
       {
@@ -286,6 +325,9 @@ const routes = [
       import(/* webpackChunkName: "riwayat" */ "../views/Registrasi.vue"),
   },
   {
+    path: "/sukses",
+  },
+  {
     path: "/listPelatihan",
     component: () =>
       import(/* webpackChunkName: "riwayat" */ "../views/List.vue"),
@@ -297,5 +339,27 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+router.beforeEach((to,from,next)=>{
+  if(to.path=="/sukses"){
+    localStorage.setItem('token',to.query.token)
+    next({
+      path:'/dashboardPeserta'
+    })
+  }else{
+    if(to.matched.some(record => record.meta.requiredAuth)){
+      if(!localStorage.getItem('token') || localStorage.getItem('token')== "undefined" || localStorage.getItem('token') == ""){
+        next({
+          path:'/',
+          query: { redirect: to.fullPath}
+        })
+      } else {
+        next()
+      }
+    }else {
+      next()
+    }
+  }
+})
 
 export default router;

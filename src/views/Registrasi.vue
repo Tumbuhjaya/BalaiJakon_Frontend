@@ -11,18 +11,21 @@
             <div class="box2 px-3 md-4 mb-4">
               <b-form-input
                 type="text"
-                placeholder="Email"
+                v-model="username"
+                placeholder="Username"
                 tabindex="15"
                 class="input"
               ></b-form-input>
               <b-form-input
                 type="password"
+                v-model="password"
                 placeholder="Password"
                 tabindex="15"
                 class="input"
               ></b-form-input>
               <b-form-input
                 type="text"
+                v-model="namaInstansi"
                 placeholder="Nama Instansi"
                 tabindex="15"
                 class="input"
@@ -31,6 +34,7 @@
             <div class="box2 px-3 md-4 mb-4">
               <b-form-input
                 type="text"
+                v-model="nama"
                 placeholder="Contact Person"
                 tabindex="15"
                 class="input"
@@ -39,6 +43,7 @@
             <div class="box2 px-3 md-4 mb-4">
               <b-form-input
                 type="text"
+                v-model="alamat"
                 placeholder="Alamat"
                 tabindex="15"
                 class="input"
@@ -47,6 +52,7 @@
             <div class="box2 px-3 md-4 mb-4">
               <b-form-input
                 type="text"
+                v-model="noHp"
                 placeholder="No Kontak"
                 tabindex="15"
                 class="input"
@@ -55,6 +61,7 @@
             <div class="box2 px-3 md-4 mb-4">
               <b-form-input
                 type="text"
+                v-model="noKTP"
                 placeholder="Spesialisasi"
                 tabindex="15"
                 class="input"
@@ -63,6 +70,7 @@
             <div class="box2 px-3 md-4 mb-4">
               <b-form-input
                 type="text"
+                v-model="email"
                 placeholder="No Kontak Darurat"
                 tabindex="15"
                 class="input"
@@ -71,7 +79,11 @@
 
             <div class="mb-12">
               <center>
-                <b-button variant="primary" class="text-uppercase mr-2 mb-4">
+                <b-button
+                  variant="primary"
+                  class="text-uppercase mr-2 mb-4"
+                  @click="register()"
+                >
                   DAFTAR</b-button
                 >
                 <b-button variant="primary" class="text-uppercase ml-2 mb-4">
@@ -93,9 +105,42 @@
     </b-card>
   </b-row>
 </template>
+
 <script>
-// export default {
-// };
+import axios from "axios";
+import ipBackEnd from "../config";
+export default {
+  methods: {
+    register() {
+      let vm = this;
+      axios
+        .post(ipBackEnd + "users/register", {
+          username: vm.username,
+          password: vm.password,
+          nama: vm.nama,
+          alamat: vm.alamat,
+          noHP: vm.noHp,
+          tempatlahir: vm.tempatlahir,
+          noKTP: vm.noKTP,
+          email: vm.email,
+          role: "mitra",
+          tanggal: vm.date,
+          approval: 0,
+        })
+        .then(function (response) {
+          // console.log(response);
+          // if(response.data.message){
+          console.log(vm);
+          vm.notif = response.data.message;
+          vm.$router.push("/login");
+          // }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
 <style scoped>
 .box2 {

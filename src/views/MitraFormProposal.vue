@@ -192,7 +192,7 @@
   background: transparent;
   letter-spacing: 1px;
 }
-.side-btn{
+.side-btn {
   outline: none;
   background-color: transparent;
 }

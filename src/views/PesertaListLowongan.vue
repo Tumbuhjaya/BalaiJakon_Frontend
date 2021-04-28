@@ -3,7 +3,7 @@
     <div class="topengine">
       <div class="abc">
         <router-link
-          to="/pesertaPelatihan"
+          to="/PesertaLowongan"
           active-class="active"
           exact
           tag="button"
@@ -57,12 +57,14 @@
         @filtered="onFiltered"
       >
         <template #cell(actions)>
-          <b-button size="sm" variant="primary" class="mr-1"> Daftar </b-button>
+          <b-button size="sm" variant="primary" class="mr-1">
+            KIrim Lamaran</b-button
+          >
           <!-- <b-button size="sm" variant="secondary" class="mr-1">
             Lihat Detail
           </b-button> -->
-        </template>
-      </b-table>
+        </template></b-table
+      >
     </div>
     <div class="box3">
       <b-col sm="5" md="6" class="my-1">
@@ -104,94 +106,94 @@ export default {
     return {
       items: [
         {
-          no: 1,
-          mitra: "Budi",
-          jenisPelatihan: "Operator Alat Berat",
+          no: 123,
+          mitra: "Joko",
+          jenisPelatihan: "Arsitektur Bangunan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "aria",
+          pelatih: "Jawa Timur",
         },
         {
-          no: 2,
-          mitra: "Budi",
+          no: 34,
+          mitra: "Joko",
           jenisPelatihan: "Konstruksi",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "Indra",
+          pelatih: "Bali",
         },
         {
-          no: 3,
-          mitra: "Budi",
+          no: 53,
+          mitra: "Joko",
           jenisPelatihan: "Pertukangan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "jono",
+          pelatih: "Jawa Barat",
           _rowVariant: "danger",
         },
         {
-          no: 4,
-          mitra: "Budi",
-          jenisPelatihan: "Operator Alat Berat",
+          no: 74,
+          mitra: "Joko",
+          jenisPelatihan: "Arsitektur Bangunan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "Rini",
+          pelatih: "Jawa Tengah",
         },
         {
           no: 5,
-          mitra: "Budi",
-          jenisPelatihan: "Operator Alat Berat",
+          mitra: "Joko",
+          jenisPelatihan: "Arsitektur Bangunan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "roni",
+          pelatih: "Sumatra",
         },
         {
           no: 6,
-          mitra: "Jono",
-          jenisPelatihan: "Operator Alat Berat",
+          mitra: "Jawa Barat",
+          jenisPelatihan: "Arsitektur Bangunan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "aria",
+          pelatih: "Jawa Timur",
         },
         {
           no: 7,
-          mitra: "Jono",
+          mitra: "Jawa Barat",
           jenisPelatihan: "Konstruksi",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "Indra",
+          pelatih: "Bali",
         },
         {
           no: 13,
-          mitra: "Jono",
+          mitra: "Jawa Barat",
           jenisPelatihan: "Pertukangan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "jono",
+          pelatih: "Jawa Barat",
           _rowVariant: "danger",
         },
         {
           no: 8,
-          mitra: "Jono",
-          jenisPelatihan: "Operator Alat Berat",
+          mitra: "Jawa Barat",
+          jenisPelatihan: "Arsitektur Bangunan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "Rini",
+          pelatih: "Jawa Tengah",
         },
         {
           no: 9,
-          mitra: "Jono",
-          jenisPelatihan: "Operator Alat Berat",
+          mitra: "Jawa Barat",
+          jenisPelatihan: "Arsitektur Bangunan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "roni",
+          pelatih: "Sumatra",
         },
         {
           no: 10,
           mitra: "Rina",
-          jenisPelatihan: "Operator Alat Berat",
+          jenisPelatihan: "Arsitektur Bangunan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "aria",
+          pelatih: "Jawa Timur",
         },
         {
           no: 12,
@@ -199,7 +201,7 @@ export default {
           jenisPelatihan: "Konstruksi",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "Indra",
+          pelatih: "Bali",
         },
         {
           no: 17,
@@ -207,24 +209,24 @@ export default {
           jenisPelatihan: "Pertukangan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "jono",
+          pelatih: "Jawa Barat",
           _rowVariant: "danger",
         },
         {
           no: 20,
           mitra: "Rina",
-          jenisPelatihan: "Operator Alat Berat",
+          jenisPelatihan: "Arsitektur Bangunan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "Rini",
+          pelatih: "Jawa Tengah",
         },
         {
           no: 35,
           mitra: "Rina",
-          jenisPelatihan: "Operator Alat Berat",
+          jenisPelatihan: "Arsitektur Bangunan",
           jumlahPeserta: "15",
           kategori: "umum",
-          pelatih: "roni",
+          pelatih: "Sumatra",
         },
       ],
       fields: [
@@ -236,22 +238,22 @@ export default {
         },
         {
           key: "mitra",
-          label: "Nama Mitra",
+          label: "Nama Perusahaan",
           sortable: true,
           sortDirection: "desc",
         },
         {
           key: "jenisPelatihan",
-          label: "Program pelatihan",
+          label: "Jenis Keahlian",
           sortable: true,
           class: "text-center",
         },
-        {
-          key: "jumlahPeserta",
-          label: "jumlahPeserta",
-          sortable: true,
-          class: "text-center",
-        },
+        // {
+        //   key: "jumlahPeserta",
+        //   label: "jumlahPeserta",
+        //   sortable: true,
+        //   class: "text-center",
+        // },
         {
           key: "kategori",
           label: "Kategori",
@@ -260,7 +262,7 @@ export default {
         },
         {
           key: "pelatih",
-          label: "pelatih",
+          label: "Lokasi Kerja",
           sortable: true,
           class: "text-center",
         },

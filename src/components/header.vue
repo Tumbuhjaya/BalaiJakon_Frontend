@@ -1,8 +1,8 @@
 <template>
   <div id="apps">
-    <div class="navbar" :class="{ 'hidden-navbar': !showNavbar }">
-      <b-container fluid>
-        <b-row class="justify-content-md-start">
+    <div class="header" :class="{ 'hidden-header': !showHeader }">
+      <b-container fluid class="box col-lg-12 col-md-12">
+        <b-row class="box col-xl-12 col-lg-12">
           <b-col cols="1" class="logo">
             <img class="img" src="../assets/logoPU.png" alt="logo PU" />
           </b-col>
@@ -13,7 +13,6 @@
             >
             <H6 class="headtext RI"> Republik Indonesia</H6></b-col
           >
-          <b-col cols="1"></b-col>
         </b-row>
       </b-container>
     </div>
@@ -26,7 +25,7 @@ export default {
   name: "header",
   data() {
     return {
-      showNavbar: true,
+      showHeader: true,
       lastScrollPosition: 0,
       scrollValue: 0,
     };
@@ -53,7 +52,7 @@ export default {
       if (Math.abs(window.pageYOffset - this.lastScrollPosition) < OFFSET) {
         return;
       }
-      this.showNavbar = window.pageYOffset < this.lastScrollPosition;
+      this.showHeader = window.pageYOffset < this.lastScrollPosition;
       this.lastScrollPosition = window.pageYOffset;
     },
   },
@@ -66,40 +65,43 @@ export default {
   height: 4rem;
   background: hsl(200, 50%, 90%);
 }
-
-.navbar {
+.box {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+.header {
   height: 60px;
   width: 100vw;
   background: white;
   position: fixed;
   box-shadow: 0 2px 15px rgba(71, 120, 120, 0.5);
-  transform: translate3d(0, 0, 0);
   transition: 0.1s all ease-out;
 }
 
-.navbar.hidden-navbar {
+.header.hidden-header {
   box-shadow: none;
   transform: translate3d(0, -100%, 0);
 }
 .logo {
   margin-right: 0px;
-  justify-content: center;
-  max-width: 60px;
+  justify-content: end;
+  /* max-width: 60px; */
 }
 .img {
-  max-width: 3rem;
+  max-width: 3.6rem;
   height: auto;
 }
 .headtextbox {
-  padding-top: 2px;
-  margin: 0px;
+  padding-top: 3px;
+  margin-top: 3px;
   justify-content: center;
 }
 .headtext {
   color: black;
   text-align: start;
-  font-size: 15px;
-  line-height: 9px;
+  font-size: 100%;
+  line-height: 11px;
   letter-spacing: 1px;
 }
 .headtext .PU {
@@ -107,25 +109,8 @@ export default {
 }
 
 @media (max-width: 900px) {
-  .message {
-    font-size: 7vw;
-  }
-
-  .arrow {
-    width: 10vw;
-    height: 10vw;
-  }
 }
 
 @media (max-width: 600px) {
-  .message {
-    width: 90vw;
-    font-size: 10vw;
-  }
-
-  .arrow {
-    width: 15vw;
-    height: 15vw;
-  }
 }
 </style>

@@ -2,15 +2,15 @@
   <div>
     <div class="topengine">
       <div class="abc">
-        <!-- <router-link
-          to="/pelatihan"
+        <router-link
+          to="/pesertaPelatihan"
           active-class="active"
           exact
           tag="button"
           class="side-btn"
         >
           <b-button class="back">KEMBALI</b-button>
-        </router-link> -->
+        </router-link>
       </div>
       <b-col lg="6" class="search my-1">
         <b-form-group
@@ -55,14 +55,16 @@
         show-empty
         small
         @filtered="onFiltered"
-      > 
+      >
         <template #cell(actions)>
-          <b-button size="sm" variant="primary" class="mr-1"> Daftar </b-button>
+          <b-button size="sm" variant="secondary" class="mr-1">
+            Lihat Detail</b-button
+          >
           <!-- <b-button size="sm" variant="secondary" class="mr-1">
             Lihat Detail
           </b-button> -->
-        </template></b-table
-      >
+        </template>
+      </b-table>
     </div>
     <div class="box3">
       <b-col sm="5" md="6" class="my-1">
@@ -104,51 +106,51 @@ export default {
     return {
       items: [
         {
-          no: 123,
-          mitra: "Joko",
-          jenisPelatihan: "Arsitektur Bangunan",
-          jumlahPeserta: "15",
+          no: 1,
+          mitra: "Budi",
+          jenisPelatihan: "Operator Alat Berat",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "aria",
         },
         {
-          no: 34,
-          mitra: "Joko",
+          no: 2,
+          mitra: "Budi",
           jenisPelatihan: "Konstruksi",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Indra",
         },
         {
-          no: 53,
-          mitra: "Joko",
+          no: 3,
+          mitra: "Budi",
           jenisPelatihan: "Pertukangan",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "jono",
           _rowVariant: "danger",
         },
         {
-          no: 74,
-          mitra: "Joko",
-          jenisPelatihan: "Arsitektur Bangunan",
-          jumlahPeserta: "15",
+          no: 4,
+          mitra: "Budi",
+          jenisPelatihan: "Operator Alat Berat",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Rini",
         },
         {
           no: 5,
-          mitra: "Joko",
-          jenisPelatihan: "Arsitektur Bangunan",
-          jumlahPeserta: "15",
+          mitra: "Budi",
+          jenisPelatihan: "Operator Alat Berat",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "roni",
         },
         {
           no: 6,
           mitra: "Jono",
-          jenisPelatihan: "Arsitektur Bangunan",
-          jumlahPeserta: "15",
+          jenisPelatihan: "Operator Alat Berat",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "aria",
         },
@@ -156,7 +158,7 @@ export default {
           no: 7,
           mitra: "Jono",
           jenisPelatihan: "Konstruksi",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Indra",
         },
@@ -164,7 +166,7 @@ export default {
           no: 13,
           mitra: "Jono",
           jenisPelatihan: "Pertukangan",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "jono",
           _rowVariant: "danger",
@@ -172,24 +174,24 @@ export default {
         {
           no: 8,
           mitra: "Jono",
-          jenisPelatihan: "Arsitektur Bangunan",
-          jumlahPeserta: "15",
+          jenisPelatihan: "Operator Alat Berat",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Rini",
         },
         {
           no: 9,
           mitra: "Jono",
-          jenisPelatihan: "Arsitektur Bangunan",
-          jumlahPeserta: "15",
+          jenisPelatihan: "Operator Alat Berat",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "roni",
         },
         {
           no: 10,
           mitra: "Rina",
-          jenisPelatihan: "Arsitektur Bangunan",
-          jumlahPeserta: "15",
+          jenisPelatihan: "Operator Alat Berat",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "aria",
         },
@@ -197,7 +199,7 @@ export default {
           no: 12,
           mitra: "Rina",
           jenisPelatihan: "Konstruksi",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Indra",
         },
@@ -205,7 +207,7 @@ export default {
           no: 17,
           mitra: "Rina",
           jenisPelatihan: "Pertukangan",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "jono",
           _rowVariant: "danger",
@@ -213,16 +215,16 @@ export default {
         {
           no: 20,
           mitra: "Rina",
-          jenisPelatihan: "Arsitektur Bangunan",
-          jumlahPeserta: "15",
+          jenisPelatihan: "Operator Alat Berat",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Rini",
         },
         {
           no: 35,
           mitra: "Rina",
-          jenisPelatihan: "Arsitektur Bangunan",
-          jumlahPeserta: "15",
+          jenisPelatihan: "Operator Alat Berat",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "roni",
         },
@@ -247,8 +249,8 @@ export default {
           class: "text-center",
         },
         {
-          key: "jumlahPeserta",
-          label: "jumlahPeserta",
+          key: "Tahun",
+          label: "Tahun Lulus",
           sortable: true,
           class: "text-center",
         },

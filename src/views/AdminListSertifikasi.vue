@@ -57,7 +57,7 @@
         @filtered="onFiltered"
       >
         <template #cell(actions)>
-         <router-link
+          <router-link
             to="/AdminDetailSertifikasi"
             active-class="active"
             exact

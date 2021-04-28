@@ -2,7 +2,7 @@
   <div class="content">
     <b-card-group deck class="boxinfo">
       <router-link
-        to="/PesertaListPelatihan"
+        to="/pesertaListSertifikasi"
         active-class="active"
         exact
         tag="button"
@@ -13,11 +13,11 @@
           img-alt="Card Image"
           text-variant="white"
           class="infocard"
-          ><b-card-text>LIST PELATIHAN</b-card-text>
+          ><b-card-text>LIST SERTIFIKASI</b-card-text>
         </b-card>
       </router-link>
       <router-link
-        to="/pelatihanBerjalan"
+        to="/sertifikasiBerjalan"
         active-class="active"
         exact
         tag="button"
@@ -28,11 +28,11 @@
           img-alt="Card Image"
           text-variant="white"
           class="infocard"
-          ><b-card-text> LIST PELATIHAN BERJALAN</b-card-text>
+          ><b-card-text>SERTIFIKASI BERJALAN</b-card-text>
         </b-card>
       </router-link>
       <router-link
-        to="/pelatihanSelesai"
+        to="/sertifikasiSelesai"
         active-class="active"
         exact
         tag="button"
@@ -43,7 +43,7 @@
           img-alt="Card Image"
           text-variant="white"
           class="infocard"
-          ><b-card-text> PELATIHAN SELESAI</b-card-text>
+          ><b-card-text> SERTIFIKASI SELESAI</b-card-text>
         </b-card>
       </router-link>
     </b-card-group>

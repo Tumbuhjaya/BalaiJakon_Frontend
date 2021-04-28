@@ -19,7 +19,7 @@
           <p class="dashboard font-weight-bold px-3 pb-4 mb-0">Dashboard</p>
           <p class="separator"></p>
           <router-link
-            to="/ProfilPeserta"
+            to="/profilPeserta"
             active-class="active"
             exact
             tag="button"
@@ -30,7 +30,7 @@
             </div>
           </router-link>
           <router-link
-            to="/PesertaPelatihan"
+            to="/pesertaPelatihan"
             active-class="active"
             exact
             tag="button"
@@ -46,7 +46,7 @@
             </div>
           </router-link>
           <router-link
-            to="/PesertaSertifikasi"
+            to="/pesertaSertifikasi"
             active-class="active"
             exact
             tag="button"
@@ -59,6 +59,22 @@
                 font-scale="1"
               ></b-icon>
               Sertifikasi
+            </div>
+          </router-link>
+          <router-link
+            to="/pesertaLowongan"
+            active-class="active"
+            exact
+            tag="button"
+            class="side-btn"
+          >
+            <div class="link-container">
+              <b-icon
+                icon="clipboard-check"
+                aria-hidden="true"
+                font-scale="1"
+              ></b-icon>
+              Lowongan
             </div>
           </router-link>
           <router-link

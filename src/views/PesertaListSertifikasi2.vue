@@ -3,7 +3,7 @@
     <div class="topengine">
       <div class="abc">
         <router-link
-          to="/pesertaPelatihan"
+          to="/pesertaSertifikasi"
           active-class="active"
           exact
           tag="button"
@@ -57,7 +57,9 @@
         @filtered="onFiltered"
       >
         <template #cell(actions)>
-          <b-button size="sm" variant="primary" class="mr-1"> Daftar </b-button>
+          <b-button size="sm" variant="secondary" class="mr-1">
+            Lihat Detail</b-button
+          >
           <!-- <b-button size="sm" variant="secondary" class="mr-1">
             Lihat Detail
           </b-button> -->
@@ -107,7 +109,7 @@ export default {
           no: 1,
           mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "aria",
         },
@@ -115,7 +117,7 @@ export default {
           no: 2,
           mitra: "Budi",
           jenisPelatihan: "Konstruksi",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Indra",
         },
@@ -123,7 +125,7 @@ export default {
           no: 3,
           mitra: "Budi",
           jenisPelatihan: "Pertukangan",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "jono",
           _rowVariant: "danger",
@@ -132,7 +134,7 @@ export default {
           no: 4,
           mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Rini",
         },
@@ -140,7 +142,7 @@ export default {
           no: 5,
           mitra: "Budi",
           jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "roni",
         },
@@ -148,7 +150,7 @@ export default {
           no: 6,
           mitra: "Jono",
           jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "aria",
         },
@@ -156,7 +158,7 @@ export default {
           no: 7,
           mitra: "Jono",
           jenisPelatihan: "Konstruksi",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Indra",
         },
@@ -164,7 +166,7 @@ export default {
           no: 13,
           mitra: "Jono",
           jenisPelatihan: "Pertukangan",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "jono",
           _rowVariant: "danger",
@@ -173,7 +175,7 @@ export default {
           no: 8,
           mitra: "Jono",
           jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Rini",
         },
@@ -181,7 +183,7 @@ export default {
           no: 9,
           mitra: "Jono",
           jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "roni",
         },
@@ -189,7 +191,7 @@ export default {
           no: 10,
           mitra: "Rina",
           jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "aria",
         },
@@ -197,7 +199,7 @@ export default {
           no: 12,
           mitra: "Rina",
           jenisPelatihan: "Konstruksi",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Indra",
         },
@@ -205,7 +207,7 @@ export default {
           no: 17,
           mitra: "Rina",
           jenisPelatihan: "Pertukangan",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "jono",
           _rowVariant: "danger",
@@ -214,7 +216,7 @@ export default {
           no: 20,
           mitra: "Rina",
           jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "Rini",
         },
@@ -222,7 +224,7 @@ export default {
           no: 35,
           mitra: "Rina",
           jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
+          Tahun: "2020",
           kategori: "umum",
           pelatih: "roni",
         },
@@ -247,8 +249,8 @@ export default {
           class: "text-center",
         },
         {
-          key: "jumlahPeserta",
-          label: "jumlahPeserta",
+          key: "Tahun",
+          label: "Tahun Lulus",
           sortable: true,
           class: "text-center",
         },

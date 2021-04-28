@@ -33,28 +33,23 @@
                   class="input"
                 ></b-form-input>
               </div>
-              <div class="boxcheck mb-4">
+              <!-- <div class="boxcheck mb-4">
                 <center>
                   <b-form-checkbox value="orange">Ingat saya</b-form-checkbox>
                 </center>
-              </div>
+              </div> -->
               <div class="box button mb-3">
                 <center>
                   <div class="text-center mb-4 mt-4">
-                    <router-link
-                      to="/dashboard"
-                      active-class="active"
-                      exact
-                      tag="button"
-                      class="register-akun"
+                    <b-button
+                      variant="primary"
+                      class="login-btn text-uppercase mr-2 mb-4"
+                      @click="signIn()"
+                      >Login</b-button
                     >
-                      <b-button
-                        variant="primary"
-                        class="text-uppercase mr-2 mb-4"
-                        >Login</b-button
-                      >
-                    </router-link>
                   </div>
+                  <p>Atau</p>
+                  <GoogleLogin />
                 </center>
               </div>
               <div class="text-center md-4 mt-4">
@@ -82,11 +77,44 @@
 </template>
 
 <script>
+import axios from "axios";
+import ipBackEnd from "../config";
+import GoogleLogin from "../components/googleAuth";
 // @ is an alias to /src
 
 export default {
   name: "Login",
-  components: {},
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    signIn() {
+      let vm = this;
+      console.log(vm.username);
+      console.log(vm.password);
+      axios
+        .post(ipBackEnd + "users/login", {
+          username: vm.username,
+          password: vm.password,
+        })
+        .then(function (response) {
+          console.log(response);
+          localStorage.setItem("token", response.data[0].token);
+          localStorage.setItem("id", response.data[1].id);
+          localStorage.setItem("role", response.data[2].role);
+          vm.$router.push({ path: "/dashboardMitra" });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  },
+  components: {
+    GoogleLogin,
+  },
 };
 </script>
 
@@ -107,7 +135,7 @@ export default {
 .form-box {
   overflow: hidden;
   border: 0 !important;
-  border-radius: 20px;
+  border-radius: 6px;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -121,7 +149,17 @@ export default {
 .boxlogin {
   justify-self: center;
 }
-
+.login-btn {
+  width: 50%;
+  height: 45px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  box-shadow: turquoise;
+  border: 1px solid #00000020;
+  border-radius: 6px;
+  outline: none;
+  letter-spacing: 1px;
+}
 .images {
   width: 80%;
   min-height: max-content;
@@ -148,7 +186,7 @@ export default {
   box-sizing: border-box;
   box-shadow: turquoise;
   border: 1px solid #00000020;
-  border-radius: 50px;
+  border-radius: 6px;
   outline: none;
   background: turquoise;
 }
@@ -163,7 +201,7 @@ export default {
 .input input:valid {
   border: 2px solid black;
 }
-.boxbutton {
+.box .button {
   align-items: center;
 }
 
