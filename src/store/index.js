@@ -14,6 +14,21 @@ export default new Vuex.Store({
     showSpinner:false
   },
   mutations: {
+    SET_PROFIL(state, dataProfil){
+      state.dataProfil = dataProfil
+    },
+    SET_DATAPELATIHAN(state, dataPelatihan){
+      state.dataPelatihan = dataPelatihan
+    },
+    SET_DATASERTIFIKASI(state, dataSertifikasi){
+      state.dataSertifikasi = dataSertifikasi
+    },
+    SET_DATALOWONGAN(state, dataLowongan){
+      state.dataLowongan = dataLowongan
+    },
+    SET_SPINNER(state, spinner){
+      state.showSpinner = spinner
+    }
 
   },
   actions: {

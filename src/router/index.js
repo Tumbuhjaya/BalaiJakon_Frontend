@@ -4,6 +4,7 @@ import Home from "../views/Login.vue";
 import DashboardMitra from "../views/DashboardMitra.vue";
 import DashboardAdmin from "../views/DashboardAdmin.vue";
 import DashboardPeserta from "../views/DashboardPeserta.vue";
+import fungsi from "./fungsi";
 
 Vue.use(VueRouter);
 
@@ -340,26 +341,38 @@ const router = new VueRouter({
   routes,
 });
 
-router.beforeEach((to,from,next)=>{
-  if(to.path=="/sukses"){
-    localStorage.setItem('token',to.query.token)
+router.beforeEach((to, from, next) => {
+  if (to.path == "/sukses") {
+    localStorage.setItem("token", to.query.token);
+    localStorage.setItem("id", fungsi.getQueryVariable("id"));
+    localStorage.setItem("role", fungsi.getQueryVariable("role"));
+    let token = localStorage.getItem("token");
+    let id = localStorage.getItem("id");
+    let role = localStorage.getItem("role");
+    console.log(token);
+    console.log(id);
+    console.log(role);
     next({
-      path:'/dashboardPeserta'
-    })
-  }else{
-    if(to.matched.some(record => record.meta.requiredAuth)){
-      if(!localStorage.getItem('token') || localStorage.getItem('token')== "undefined" || localStorage.getItem('token') == ""){
+      path: "/dashboardPeserta",
+    });
+  } else {
+    if (to.matched.some((record) => record.meta.requiredAuth)) {
+      if (
+        !localStorage.getItem("token") ||
+        localStorage.getItem("token") == "undefined" ||
+        localStorage.getItem("token") == ""
+      ) {
         next({
-          path:'/',
-          query: { redirect: to.fullPath}
-        })
+          path: "/",
+          query: { redirect: to.fullPath },
+        });
       } else {
-        next()
+        next();
       }
-    }else {
-      next()
+    } else {
+      next();
     }
   }
-})
+});
 
 export default router;
