@@ -5,26 +5,26 @@
 </template>
 
 <script>
-import axios from "axios"
-import ipBackEnd from "../config"
+import axios from "axios";
+import ipBackEnd from "../config";
 export default {
   data() {
     return {};
   },
-  methods:{
-      goo(){
-          let vm= this
-          axios
+  methods: {
+    goo() {
+      let vm = this;
+      axios
         .get(ipBackEnd + "auth/google/callback", {
           username: vm.username,
           password: vm.password,
         })
         .then(function (response) {
           console.log(response);
-        //   localStorage.setItem("token", response.data[0].token);
-        //   localStorage.setItem("id", response.data[1].id);
-        //   localStorage.setItem("role", response.data[2].role);
-        //   vm.$router.push({ path: "/dashboardMitra" });
+          //   localStorage.setItem("token", response.data[0].token);
+          //   localStorage.setItem("id", response.data[1].id);
+          //   localStorage.setItem("role", response.data[2].role);
+          //   vm.$router.push({ path: "/dashboardMitra" });
         })
         .catch(function (error) {
           console.log(error);
@@ -32,7 +32,7 @@ export default {
     },
   },
   mounted(res) {
-      console.log(res.code)
+    console.log(res.code);
     // localStorage.setItem("token", response.token);
     // this.goo()
   },

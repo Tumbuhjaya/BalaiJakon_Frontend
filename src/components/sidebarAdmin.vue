@@ -19,7 +19,7 @@
           <p class="dashboard font-weight-bold px-3 pb-4 mb-0">Dashboard</p>
           <p class="separator"></p>
           <router-link
-            to="/ListMitra"
+            to="/listMitra"
             active-class="active"
             exact
             tag="button"
@@ -30,7 +30,7 @@
             </div>
           </router-link>
           <router-link
-            to="/AdminProposal"
+            to="/AdminProposalPelatihan"
             active-class="active"
             exact
             tag="button"

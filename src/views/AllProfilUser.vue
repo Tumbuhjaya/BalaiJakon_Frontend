@@ -1,9 +1,9 @@
 <template>
-  <b-container fluid>
+  <div>
     <div class="topengine">
       <div class="abc">
         <router-link
-          to="/pelatihanMitra"
+          to="/sertifikasiMitra"
           active-class="active"
           exact
           tag="button"
@@ -31,7 +31,7 @@
           <b-col md="" class="boxlogin">
             <b-card-body>
               <b-card-title class="c-title text-center md-4">
-                DETAIL PELATIHAN
+                DETAIL SERTIFIKASI
               </b-card-title>
               <div class="box2 px-3 md-4 mb-4">
                 <b-form-group label="Mitra">
@@ -39,7 +39,7 @@
                     type="email"
                     placeholder="SMK Pembangunan"
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -48,7 +48,7 @@
                     type="text"
                     placeholder="Jakarta"
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -59,7 +59,7 @@
                     type="text"
                     placeholder="SMK Pembangunan"
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -68,18 +68,18 @@
                     type="email"
                     placeholder="+62 0810000078 "
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
               </div>
               <div class="box2 px-3 md-4 mb-4">
-                <b-form-group label="Jenis Pelatihan">
+                <b-form-group label="Jenis Sertifikasi">
                   <b-form-input
                     type="email"
                     placeholder="Operator Alat Berat"
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -88,11 +88,31 @@
                     type="email"
                     placeholder="Pemula"
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
               </div>
+              <!-- <div class="box2 px-3 md-4 mb-4">
+                <b-form-group label="Kelurahan">
+                  <b-form-input
+                    type="email"
+                    placeholder="Sukorejo"
+                    required
+                    disabled="true"
+                    class="input"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group label="Kecamatan">
+                  <b-form-input
+                    type="email"
+                    placeholder="Gunungpati"
+                    required
+                    disabled="true"
+                    class="input"
+                  ></b-form-input>
+                </b-form-group>
+              </div> -->
               <div class="box2 px-3 md-4 mb-4">
                 <b-table
                   hover
@@ -115,16 +135,17 @@
         </b-row>
       </b-card>
     </b-row>
-  </b-container>
+  </div>
 </template>
 
 <script>
-import axios from "axios"
-import ipBackEnd from "../config"
+// import router from "../router"
 export default {
+  name:"profil",
   data() {
     return {
       items: [],
+      pageId: 0,
       fields: [
         {
           key: "no",
@@ -133,8 +154,14 @@ export default {
           class: "text-center",
         },
         {
-          key: "programPelatihan",
-          label: "Program Pelatihan",
+          key: "mitra",
+          label: "Nama Mitra",
+          sortable: true,
+          sortDirection: "desc",
+        },
+        {
+          key: "jenisSertifikasi",
+          label: "Program Sertifikasi",
           sortable: true,
           class: "text-center",
         },
@@ -150,7 +177,23 @@ export default {
           sortable: true,
           class: "text-center",
         },
-        { key: "actions", label: "Actions" },
+        // {
+        //   key:"pelatih",
+        //   label:"pelatih",
+        //   sortable:true,
+        //   class:"text-center"
+        // },
+        // {
+        //   key: 'isActive',
+        //   label: 'Is Active',
+        //   formatter: (value, key, item) => {
+        //     return value ? 'Yes' : 'No'
+        //   },
+        //   sortable: true,
+        //   sortByFormatted: true,
+        //   filterByFormatted: true
+        // },
+        // { key: "actions", label: "Actions" },
       ],
       totalRows: 1,
       currentPage: 1,
@@ -178,33 +221,15 @@ export default {
         });
     },
   },
+  created(){
+    this.pageId = this.$route.params.id
+    console.log(this.pageId)
+  },
   mounted() {
     // Set the initial number of items
     this.totalRows = this.items.length;
   },
-  created(){
-    this.getPelatihan()
-  },
-  methods:{
-    async getPelatihan() {
-      let idm = localStorage.getItem("id");
-      console.log(idm);
-      let props = await axios
-        .get(ipBackEnd + `masterPelatihan/list/${idm}`, {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      console.log(props);
-      this.items = props.data;
-      this.totalRows = this.items.length;
-      console.log(this.items);
-    },
-  }
-  // methods: {
+  methods: {
   //   info(item, index, button) {
   //     this.infoModal.title = `Row index: ${index}`
   //     this.infoModal.content = JSON.stringify(item, null, 2)
@@ -214,12 +239,12 @@ export default {
   //     this.infoModal.title = ''
   //     this.infoModal.content = ''
   //   },
-  //   onFiltered(filteredItems) {
-  //     // Trigger pagination to update the number of buttons/pages due to filtering
-  //     this.totalRows = filteredItems.length
-  //     this.currentPage = 1
-  //   }
-  // }
+    onFiltered(filteredItems) {
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalRows = filteredItems.length
+      this.currentPage = 1
+    }
+  }
 };
 </script>
 
@@ -228,38 +253,30 @@ export default {
   display: flex;
   justify-content: space-between;
   letter-spacing: 1px;
-  /* background-color: red; */
 }
 .side-btn {
   border: none;
-  background: transparent;
 }
 .abc {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   padding: 0;
   margin: 0%;
 }
-.c-title{
-  letter-spacing: 1.8px;
-}
 .box2 {
-  width: 100%;
   display: flex;
   flex-direction: row;
   position: relative;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: start;
   letter-spacing: 1px;
-  background: turquoise;
 }
 .box3 {
   display: flex;
   justify-content: space-between;
-  padding: 5%;
 }
 .input {
-  width: 125%;
+  width: 50vh;
   height: 50px;
   padding-left: 30px;
   margin-bottom: 20px;

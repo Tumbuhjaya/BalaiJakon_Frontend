@@ -10,8 +10,12 @@
             class="mr-3 rounded-circle img-thumbnail shadow-sm"
           ></b-img>
           <div class="sideavatar title">
-            <h4 class="m-0">Budi</h4>
-            <p class="font-weight-normal text-muted mb-0">Mitra Jakon</p>
+            <h4 class="namaProfil m-0 text-uppercase">
+              {{ dataProfil.username }}
+            </h4>
+            <p class="font-weight-normal text-muted text-uppercase mb-0">
+              {{ dataProfil.role }}
+            </p>
           </div>
         </b-row>
 
@@ -102,6 +106,8 @@
 
 <script>
 import OFFSET from "../views/offset";
+import axios from "axios";
+import ipBackEnd from "../config";
 export default {
   name: "sidebarMitra",
   data() {
@@ -109,6 +115,7 @@ export default {
       showSidebar: true,
       lastScrollPosition: 0,
       scrollValue: 0,
+      dataProfil: [],
     };
   },
 
@@ -119,6 +126,7 @@ export default {
     viewportMeta.name = "viewport";
     viewportMeta.content = "width=device-width, initial-scale=1";
     document.head.appendChild(viewportMeta);
+    this.getProfil();
   },
 
   beforeDestroy() {
@@ -140,6 +148,24 @@ export default {
       let vm = this;
       localStorage.clear();
       vm.$router.push({ path: "/login" });
+    },
+    getProfil() {
+      let vm = this;
+      let id = localStorage.getItem("id");
+      console.log(id);
+      axios
+        .get(ipBackEnd + `users/details/${id}`, {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        })
+        .then(function (response) {
+          vm.dataProfil = response.data[0];
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
   },
 };

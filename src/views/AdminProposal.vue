@@ -13,12 +13,12 @@
           img-alt="Card Image"
           text-variant="white"
           class="infocard"
-          ><b-card-text> PROPOSAL MITRA </b-card-text>
+          ><b-card-text> PERMOHONAN MITRA BARU </b-card-text>
         </b-card>
       </router-link>
       <router-link
-        to="/AdminProposalPelatihan"
-        active-class="active"
+        to="/adminProposalPelatihan"
+        active-class="active" 
         exact
         tag="button"
         class="side-btn"

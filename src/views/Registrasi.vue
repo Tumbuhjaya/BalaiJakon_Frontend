@@ -124,7 +124,7 @@ export default {
           noKTP: vm.noKTP,
           email: vm.email,
           role: "mitra",
-          tanggal: vm.date,
+          tanggalLahir: vm.date,
           approval: 0,
         })
         .then(function (response) {

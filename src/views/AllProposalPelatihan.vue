@@ -2,15 +2,15 @@
   <div>
     <div class="topengine">
       <div class="abc">
-        <!-- <router-link
-          to="/pelatihan"
+        <router-link
+          to="/AdminProposal"
           active-class="active"
           exact
           tag="button"
           class="side-btn"
         >
           <b-button class="back">KEMBALI</b-button>
-        </router-link> -->
+        </router-link>
       </div>
       <b-col lg="6" class="search my-1">
         <b-form-group
@@ -55,10 +55,24 @@
         show-empty
         small
         @filtered="onFiltered"
+        
       >
-        <template #cell(actions)>
-          <b-button size="sm" variant="secondary" class="mr-1">
-            Lihat Detail
+        <template #cell(actions)="{ item }">
+          <b-button
+            size="sm"
+            variant="success"
+            class="mr-1"
+            @click="terima(item.id)"
+          >
+            Terima
+          </b-button>
+          <b-button
+            size="sm"
+            variant="danger"
+            class="mr-1"
+            @click="revisi(item.id)"
+          >
+            Revisi
           </b-button>
         </template></b-table
       >
@@ -98,181 +112,31 @@
 </template>
 
 <script>
+import axios from "axios";
+import ipBackEnd from "../config";
 export default {
   data() {
     return {
-      items: [
-        {
-          no: 1,
-          mitra: "Budi",
-          lokasi: "Jakarta",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "aria",
-        },
-        {
-          no: 2,
-          mitra: "Budi",
-          lokasi: "Semarang",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "Indra",
-        },
-        {
-          no: 3,
-          mitra: "Budi",
-          lokasi: "Surabaya",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "jono",
-          _rowVariant: "danger",
-        },
-        {
-          no: 4,
-          mitra: "Budi",
-          lokasi: "Jakarta",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "Rini",
-        },
-        {
-          no: 5,
-          mitra: "Budi",
-          lokasi: "Jakarta",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "roni",
-        },
-        {
-          no: 6,
-          mitra: "Jono",
-          lokasi: "Jakarta",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "aria",
-        },
-        {
-          no: 7,
-          mitra: "Jono",
-          lokasi: "Semarang",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "Indra",
-        },
-        {
-          no: 13,
-          mitra: "Jono",
-          lokasi: "Surabaya",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "jono",
-          _rowVariant: "danger",
-        },
-        {
-          no: 8,
-          mitra: "Jono",
-          lokasi: "Jakarta",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "Rini",
-        },
-        {
-          no: 9,
-          mitra: "Jono",
-          lokasi: "Jakarta",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "roni",
-        },
-        {
-          no: 10,
-          mitra: "Rina",
-          lokasi: "Jakarta",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "aria",
-        },
-        {
-          no: 12,
-          mitra: "Rina",
-          lokasi: "Semarang",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "Indra",
-        },
-        {
-          no: 17,
-          mitra: "Rina",
-          lokasi: "Surabaya",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "jono",
-          _rowVariant: "danger",
-        },
-        {
-          no: 20,
-          mitra: "Rina",
-          lokasi: "Jakarta",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "Rini",
-        },
-        {
-          no: 35,
-          mitra: "Rina",
-          lokasi: "Jakarta",
-          jumlahPeserta: "15",
-          status: "aktif",
-          pelatih: "roni",
-        },
-      ],
+      items: [],
       fields: [
         {
-          key: "no",
-          label: "no",
+          key: "namaPelatihan",
+          label: "Program pelatihan",
           sortable: true,
           class: "text-center",
         },
         {
-          key: "mitra",
-          label: "Nama Mitra",
-          sortable: true,
-          sortDirection: "desc",
-        },
-        {
-          key: "lokasi",
-          label: "Lokasi",
+          key: "jumlahPeserta",
+          label: "jumlahPeserta",
           sortable: true,
           class: "text-center",
         },
-        // {
-        //   key: "jumlahPeserta",
-        //   label: "jumlahPeserta",
-        //   sortable: true,
-        //   class: "text-center",
-        // },
         {
           key: "status",
           label: "Status",
           sortable: true,
           class: "text-center",
         },
-        // {
-        //   key: "pelatih",
-        //   label: "pelatih",
-        //   sortable: true,
-        //   class: "text-center",
-        // },
-        // {
-        //   key: 'isActive',
-        //   label: 'Is Active',
-        //   formatter: (value, key, item) => {
-        //     return value ? 'Yes' : 'No'
-        //   },
-        //   sortable: true,
-        //   sortByFormatted: true,
-        //   filterByFormatted: true
-        // },
         { key: "actions", label: "Actions" },
       ],
       totalRows: 1,
@@ -301,9 +165,84 @@ export default {
         });
     },
   },
+  created() {
+    this.getProposal();
+  },
   mounted() {
     // Set the initial number of items
     this.totalRows = this.items.length;
+  },
+  methods: {
+    onFiltered(filteredItems) {
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
+      console.log(this.totalRows, "cihuy");
+    },
+    async getProposal() {
+      let props = await axios
+        .get(ipBackEnd + `masterPelatihan/list`, {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      this.items = props.data.data;
+      this.totalRows = this.items.length;
+      console.log(this.items);
+    },
+    revisi(idp) {
+      console.log(idp);
+      axios
+        .post(
+          ipBackEnd + `masterPelatihan/changeStatus/${idp}`,
+          {
+            status: 1,
+          },
+          {
+            headers: {
+              token: localStorage.getItem("token"),
+            },
+          }
+        )
+        .then(function (response) {
+          console.log(response);
+          // if(response.data.message){
+          // console.log(vm);
+          // vm.notif = response.data.message;
+          // }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    terima(idp) {
+      console.log(idp);
+      axios
+        .post(
+          ipBackEnd + `masterPelatihan/changeStatus/${idp}`,
+          {
+            status: 2,
+          },
+          {
+            headers: {
+              token: localStorage.getItem("token"),
+            },
+          }
+        )
+        .then(function (response) {
+          console.log(response);
+          // if(response.data.message){
+          // console.log(vm);
+          // vm.notif = response.data.message;
+          // }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
   },
   // methods: {
   //   info(item, index, button) {
@@ -315,12 +254,12 @@ export default {
   //     this.infoModal.title = ''
   //     this.infoModal.content = ''
   //   },
-  //   onFiltered(filteredItems) {
-  //     // Trigger pagination to update the number of buttons/pages due to filtering
-  //     this.totalRows = filteredItems.length
-  //     this.currentPage = 1
-  //   }
+  // onFiltered(filteredItems) {
+  //   // Trigger pagination to update the number of buttons/pages due to filtering
+  //   this.totalRows = filteredItems.length
+  //   this.currentPage = 1
   // }
+  //   }
 };
 </script>
 

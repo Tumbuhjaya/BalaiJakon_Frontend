@@ -22,23 +22,19 @@
                   FORM PROPOSAL PELATIHAN
                 </b-card-title>
                 <div class="box2 px-3 md-4 mb-4">
-                  <b-form-input
+                  <!-- <b-form-input
                     type="text"
                     placeholder="Nama Mitra"
                     tabindex="15"
                     class="input"
-                  ></b-form-input>
-                  <b-form-input
-                    type="text"
-                    placeholder="Alamat"
-                    tabindex="15"
-                    class="input"
-                  ></b-form-input>
+                    v-model="mitra"
+                  ></b-form-input> -->
                   <b-form-input
                     type="text"
                     placeholder="Lokasi Pelatihan"
                     tabindex="15"
                     class="input"
+                    v-model="lokasi"
                   ></b-form-input>
                 </div>
                 <div class="box2 px-3 md-4 mb-4">
@@ -47,14 +43,16 @@
                     placeholder="Jenis Pelatihan"
                     tabindex="15"
                     class="input"
+                    v-model="jenis"
                   ></b-form-input>
                 </div>
                 <div class="box2 px-3 md-4 mb-4">
                   <b-form-input
                     type="text"
-                    placeholder="Bidang Keahlian"
+                    placeholder="Nama Pelatihan"
                     tabindex="15"
                     class="input"
+                    v-model="namaPelatihan"
                   ></b-form-input>
                 </div>
                 <div class="box2 px-3 md-4 mb-4">
@@ -63,14 +61,25 @@
                     placeholder="Jumlah Peserta"
                     tabindex="15"
                     class="input"
+                    v-model="jumlah"
                   ></b-form-input>
                 </div>
                 <div class="box2 px-3 md-4 mb-4">
                   <b-form-input
                     type="text"
-                    placeholder="Spesialisasi"
+                    placeholder="Pelatih"
                     tabindex="15"
                     class="input"
+                    v-model="pelatih"
+                  ></b-form-input>
+                </div>
+                <div class="box2 px-3 md-4 mb-4">
+                  <b-form-input
+                    type="text"
+                    placeholder="Tanggal Pelatihan"
+                    tabindex="15"
+                    class="input"
+                    v-model="tanggal"
                   ></b-form-input>
                 </div>
 
@@ -79,25 +88,18 @@
                     <b-button
                       variant="primary"
                       class="text-uppercase mr-2 mb-4"
+                      @click="regisPelatihan()"
                     >
-                      SUBMIT</b-button
+                      Submit</b-button
                     >
                     <b-button
                       variant="primary"
                       class="text-uppercase ml-2 mb-4"
                     >
-                      RESET
+                      reset
                     </b-button>
                   </center>
                 </div>
-                <!-- <div class="text-center md-4 mt-4">
-                Lupa Password?
-                <a href="#" class="forget-akun">Klaim disini</a>
-              </div>
-              <div class="text-center mb-4 mt-4">
-                Belum memiliki akun?
-                <a href="#" class="register-akun">Daftar disini</a>
-              </div> -->
               </b-card-body>
             </b-col>
           </b-row>
@@ -107,63 +109,67 @@
   </div>
 </template>
 <script>
-// export default {
-//   name: "register",
-//   data() {
-//     return {
-//       nama: "",
-//       kelamin: "",
-//       alamat: "",
-//       tanggalLahir:"",
-//       golonganDarah:"",
-//       Spesialisasi: "",
-//       noHp: "",
-//       noDarurat:"",
-//       alamat2:"",
-//       valid: true,
-//       radioGroup: null,
-//       date: null,
-//       menu: false,
-//     };
-//   },
-//   components:{
-//     navbar,
-//   },
+import axios from "axios";
+import ipBackEnd from "../config";
+export default {
+  name: "register",
+  data() {
+    return {
+      mitra: "",
+      lokasi: "",
+      namaPelatihan: "",
+      jenis: "",
+      jumlah: "",
+      pelatih: "",
+      tanggal: "",
+      UserId: "",
+    };
+  },
+  components: {},
 
-//   methods: {
-//     save(date) {
-//       this.$refs.menu.save(date);
-//     },
-//     register() {
-//       let vm = this;
-//       axios
-//         .post(ipBackEnd + "user/register", {
-//           nama: vm.nama,
-//           alamat: vm.alamat,
-//           kelamin: vm.kelamin,
-//           golonganDarah: vm.golonganDarah,
-//           role: dokter,
-//           tanggal: vm.date,
-//         })
-//         .then(function(response) {
-//           // console.log(response);
-//           // if(response.data.message){
-//           console.log(vm);
-//           vm.notif = response.data.message;
-//           vm.$router.push("/dashboard");
-//           // }
-//         })
-//         .catch(function(error) {
-//           console.log(error);
-//         });
-//     },
-//   },
-//   watch: {
-//     menu(val) {
-//       val && setTimeout(() => (this.$refs.picker.activePicker = "YEAR"));
-//     },
-//   },
-// };
+  methods: {
+    save(date) {
+      this.$refs.menu.save(date);
+    },
+    regisPelatihan() {
+      let vm = this;
+      let id = localStorage.getItem("id");
+      // console.log(token)
+      axios
+        .post(
+          ipBackEnd + "masterPelatihan/register",
+          {
+            userId: id,
+            namaPelatihan: vm.namaPelatihan,
+            jumlahPeserta: vm.jumlah,
+            tanggalPelatihan: vm.tanggal,
+            lokasi: vm.lokasi,
+            pelatih: vm.pelatih,
+          },
+          {
+            headers: {
+              token: localStorage.getItem("token"),
+            },
+          }
+        )
+        .then(function (response) {
+          console.log(response);
+          // if(response.data.message){
+          // console.log(vm);
+          // vm.notif = response.data.message;
+          // }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  },
+  watch: {
+    menu(val) {
+      val && setTimeout(() => (this.$refs.picker.activePicker = "YEAR"));
+    },
+  },
+};
 </script>
 <style scoped>
 .formcontainer {

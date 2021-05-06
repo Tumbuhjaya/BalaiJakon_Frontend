@@ -4,6 +4,7 @@ import Home from "../views/Login.vue";
 import DashboardMitra from "../views/DashboardMitra.vue";
 import DashboardAdmin from "../views/DashboardAdmin.vue";
 import DashboardPeserta from "../views/DashboardPeserta.vue";
+import Dashboard from "../views/AllDashboard.vue";
 import fungsi from "./fungsi";
 
 Vue.use(VueRouter);
@@ -19,6 +20,44 @@ const routes = [
     name: "About",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
+  {
+    path: "/dashboard",
+    component: Dashboard,
+    children:[
+      {
+        path:"/OverPorposal",
+        component:()=>
+        import ("../views/AllOverviewProposal.vue")
+      },
+      {
+        path:"/listMitra",
+        component:()=>
+        import ("../views/AllListMitra.vue")
+      },
+      {
+        path:"/detailPelatihan",
+        component:()=>
+        import ("../views/AllDetailsPelatihan.vue")
+      },
+      {
+        path:"/profil/:id",
+        component:()=>
+        import ("../views/AllProfilUser.vue"),
+        beforeRouteUpdate(to, from, next){
+          if (to.path == "/profil/:id"){
+            next({
+              path:"/profil"
+            })
+          }
+        }
+      },
+      {
+        path:"/profil",
+        componet:() =>
+        import("../views/AllProfilUser.vue")
+      }
+    ]
   },
   {
     path: "/dashboardMitra",
@@ -137,13 +176,6 @@ const routes = [
           import(/* webpackChunkName: "profile" */ "../views/Overview.vue"),
       },
       {
-        path: "/listMitra",
-        component: () =>
-          import(
-            /* webpackChunkName: "profile" */ "../views/AdminListMitra.vue"
-          ),
-      },
-      {
         path: "/adminProposalMitra",
         component: () =>
           import(
@@ -154,7 +186,7 @@ const routes = [
         path: "/adminProposalPelatihan",
         component: () =>
           import(
-            /* webpackChunkName: "riwayat" */ "../views/AdminProposalPelatihan.vue"
+            /* webpackChunkName: "riwayat" */ "../views/AllProposalPelatihan.vue"
           ),
       },
       {
@@ -168,7 +200,7 @@ const routes = [
         path: "/adminProposal",
         component: () =>
           import(
-            /* webpackChunkName: "riwayat" */ "../views/AdminProposal.vue"
+            /* webpackChunkName: "riwayat" */ "../views/AllProposalPelatihan.vue"
           ),
       },
       {
@@ -353,7 +385,7 @@ router.beforeEach((to, from, next) => {
     console.log(id);
     console.log(role);
     next({
-      path: "/dashboardPeserta",
+      path: "/dashboard",
     });
   } else {
     if (to.matched.some((record) => record.meta.requiredAuth)) {
@@ -374,5 +406,8 @@ router.beforeEach((to, from, next) => {
     }
   }
 });
+
+ 
+
 
 export default router;

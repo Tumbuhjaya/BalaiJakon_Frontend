@@ -54,6 +54,24 @@
                   </b-form-group>
                 </div>
                 <div class="box2 px-3 md-4 mb-4">
+                  <b-form-group label="Jenis Kelamin">
+                    <b-form-select
+                      type="email"
+                      placeholder="Pilih Jenis Kelamin"
+                      required
+                    ></b-form-select>
+                  </b-form-group>
+                </div>
+                <div class="box2 px-3 md-4 mb-4">
+                  <b-form-group label="Tanggal Lahir">
+                    <b-form-datepicker
+                      type="email"
+                      placeholder="Pilih Tanggal Lahir"
+                      required
+                    ></b-form-datepicker>
+                  </b-form-group>
+                </div>
+                <div class="box2 px-3 md-4 mb-4">
                   <b-form-group label="Alamat">
                     <b-form-input
                       type="email"
@@ -125,43 +143,37 @@
     </div>
   </div>
 </template>
+
 <script>
+import axios from "axios";
+import ipBackEnd from "../config";
+// import router from "../router"
 export default {
+  name: "detailPelatihan",
   data() {
     return {
-      selected1: null,
-      selected2: null,
-      selected3: null,
-      selected4: null,
-      kelur: [
-        { value: null, text: " Pilih Kelurahan" },
-        { value: "Jateng", text: " Jawa Tengah" },
-        { value: "Jabar", text: " Jawa Barat" },
-        { value: "Jatim", text: " jawa Timur" },
-        { value: "Jakarta", text: "Jakarta" },
-      ],
-      keca: [
-        { value: null, text: " Pilih Kecamatan" },
-        { value: "Jateng", text: " Jawa Tengah" },
-        { value: "Jabar", text: " Jawa Barat" },
-        { value: "Jatim", text: " jawa Timur" },
-        { value: "Jakarta", text: "Jakarta" },
-      ],
-      kota: [
-        { value: null, text: " Pilih Kota/Kabupaten" },
-        { value: "Jateng", text: " Jawa Tengah" },
-        { value: "Jabar", text: " Jawa Barat" },
-        { value: "Jatim", text: " jawa Timur" },
-        { value: "Jakarta", text: "Jakarta" },
-      ],
-      prov: [
-        { value: null, text: " Pilih Propinsi" },
-        { value: "Jateng", text: " Jawa Tengah" },
-        { value: "Jabar", text: " Jawa Barat" },
-        { value: "Jatim", text: " jawa Timur" },
-        { value: "Jakarta", text: "Jakarta" },
-      ],
+      pageId: 0,
     };
+  },
+  created() {
+    this.pageId = this.$route.params.id;
+  },
+  methods: {
+    regisPeserta() {
+      let vm = this;
+      axios
+        .post(ipBackEnd + `poolPelatihan/register`, {
+          userId: vm.userId,
+          masterPelatihanId: vm.masterId,
+          keterangan: vm.keterangan,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
   },
 };
 </script>

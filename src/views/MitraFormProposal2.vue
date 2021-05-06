@@ -90,14 +90,6 @@
                     </b-button>
                   </center>
                 </div>
-                <!-- <div class="text-center md-4 mt-4">
-                Lupa Password?
-                <a href="#" class="forget-akun">Klaim disini</a>
-              </div>
-              <div class="text-center mb-4 mt-4">
-                Belum memiliki akun?
-                <a href="#" class="register-akun">Daftar disini</a>
-              </div> -->
               </b-card-body>
             </b-col>
           </b-row>

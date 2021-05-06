@@ -105,7 +105,7 @@ export default {
           localStorage.setItem("token", response.data[0].token);
           localStorage.setItem("id", response.data[1].id);
           localStorage.setItem("role", response.data[2].role);
-          vm.$router.push({ path: "/dashboardMitra" });
+          vm.$router.push({ path: "/dashboard" });
         })
         .catch(function (error) {
           console.log(error);

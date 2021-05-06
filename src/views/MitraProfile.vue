@@ -14,7 +14,7 @@
                   type="email"
                   placeholder="Budi@BUDIBUDI.COM"
                   required
-                  disabled="true"
+                  disabled: true
                   class="input"
                 ></b-form-input>
               </b-form-group>
@@ -23,7 +23,7 @@
                   type="password"
                   placeholder="**********"
                   required
-                  disabled="true"
+                  disabled: true
                   class="input"
                 ></b-form-input>
               </b-form-group>
@@ -34,7 +34,7 @@
                   type="text"
                   placeholder="Budi"
                   required
-                  disabled="true"
+                  disabled: true
                   class="input"
                 ></b-form-input>
               </b-form-group>
@@ -43,7 +43,7 @@
                   type="email"
                   placeholder="Budi"
                   required
-                  disabled="true"
+                  disabled: true
                   class="input"
                 ></b-form-input>
               </b-form-group>
@@ -54,7 +54,7 @@
                   type="email"
                   placeholder="jl.Budi Budi"
                   required
-                  disabled="true"
+                  disabled: true
                   class="input2"
                 ></b-form-input>
               </b-form-group>
@@ -65,7 +65,7 @@
                   type="email"
                   placeholder=" +62 8500000001"
                   required
-                  disabled="true"
+                  disabled: true
                   class="input2"
                 ></b-form-input>
               </b-form-group>
@@ -76,7 +76,7 @@
                   type="email"
                   placeholder="Sukorejo"
                   required
-                  disabled="true"
+                  disabled: true
                   class="input"
                 ></b-form-input>
               </b-form-group>
@@ -85,7 +85,7 @@
                   type="email"
                   placeholder="Gunungpati"
                   required
-                  disabled="true"
+                  disabled: true
                   class="input"
                 ></b-form-input>
               </b-form-group>
@@ -96,7 +96,7 @@
                   type="email"
                   placeholder=" Kota Semarang"
                   required
-                  disabled="true"
+                  disabled: true
                   class="input"
                 ></b-form-input>
               </b-form-group>
@@ -105,7 +105,7 @@
                   type="email"
                   placeholder="Jawa Tengah"
                   required
-                  disabled="true"
+                  disabled: true
                   class="input"
                 ></b-form-input>
               </b-form-group>
@@ -117,7 +117,7 @@
                   UBAH</b-button
                 >
                 <b-button
-                  disabled="true"
+                  disabled: true
                   variant="primary"
                   class="text-uppercase ml-2 mb-4"
                 >
@@ -132,7 +132,11 @@
   </b-row>
 </template>
 <script>
+// import axios from "axios"
+// import ipBackEnd from "../config"
+// import router from "../router"
 export default {
+      name: "profilPage"
   //  data() {
   //     return {
   //       form: {
@@ -193,23 +197,26 @@ b-form-input {
   font-weight: 500;
 }
 .box1 {
+  width: 100%;
+  display: flex;
   position: relative;
   text-align: start;
   letter-spacing: 1px;
+  justify-content: center;
 }
 .box2 {
   display: flex;
   flex-direction: row;
   position: relative;
-  justify-content: space-between;
+  justify-content: space-evenly;
   text-align: start;
   letter-spacing: 1px;
 }
 .input {
-  width: 50vh;
-  height: 50px;
+  width: 100%;
+  height: 40px;
   padding-left: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   box-sizing: border-box;
   box-shadow: turquoise;
   border: 3px solid #00000020;
@@ -218,9 +225,9 @@ b-form-input {
 }
 .input2 {
   width: 100%;
-  height: 50px;
+  height: 40px;
   padding-left: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   box-sizing: border-box;
   box-shadow: turquoise;
   border: 3px solid #00000020;

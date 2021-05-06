@@ -2,15 +2,15 @@
   <div>
     <div class="topengine">
       <div class="abc">
-        <router-link
-          to="/pesertaPelatihan"
+        <!-- <router-link
+          to="/pelatihan"
           active-class="active"
           exact
           tag="button"
-          class="back"
+          class="side-btn"
         >
           <b-button class="back">KEMBALI</b-button>
-        </router-link>
+        </router-link> -->
       </div>
       <b-col lg="6" class="search my-1">
         <b-form-group
@@ -56,15 +56,12 @@
         small
         @filtered="onFiltered"
       >
-        <template #cell(actions)>
-          <b-button size="sm" variant="secondary" class="mr-1">
-            Lihat Detail</b-button
-          >
-          <!-- <b-button size="sm" variant="secondary" class="mr-1">
+        <template #cell(actions)= " {item}">
+          <b-button size="sm" variant="secondary" class="mr-1" @click="details(item.id)">
             Lihat Detail
-          </b-button> -->
-        </template>
-      </b-table>
+          </b-button>
+        </template></b-table
+      >
     </div>
     <div class="box3">
       <b-col sm="5" md="6" class="my-1">
@@ -101,134 +98,14 @@
 </template>
 
 <script>
+import axios from "axios"
+import ipBackEnd from "../config"
+import router from "../router"
 export default {
   data() {
     return {
-      items: [
-        {
-          no: 1,
-          mitra: "Budi",
-          jenisPelatihan: "Operator Alat Berat",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "aria",
-        },
-        {
-          no: 2,
-          mitra: "Budi",
-          jenisPelatihan: "Konstruksi",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "Indra",
-        },
-        {
-          no: 3,
-          mitra: "Budi",
-          jenisPelatihan: "Pertukangan",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "jono",
-          _rowVariant: "danger",
-        },
-        {
-          no: 4,
-          mitra: "Budi",
-          jenisPelatihan: "Operator Alat Berat",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "Rini",
-        },
-        {
-          no: 5,
-          mitra: "Budi",
-          jenisPelatihan: "Operator Alat Berat",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "roni",
-        },
-        {
-          no: 6,
-          mitra: "Jono",
-          jenisPelatihan: "Operator Alat Berat",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "aria",
-        },
-        {
-          no: 7,
-          mitra: "Jono",
-          jenisPelatihan: "Konstruksi",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "Indra",
-        },
-        {
-          no: 13,
-          mitra: "Jono",
-          jenisPelatihan: "Pertukangan",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "jono",
-          _rowVariant: "danger",
-        },
-        {
-          no: 8,
-          mitra: "Jono",
-          jenisPelatihan: "Operator Alat Berat",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "Rini",
-        },
-        {
-          no: 9,
-          mitra: "Jono",
-          jenisPelatihan: "Operator Alat Berat",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "roni",
-        },
-        {
-          no: 10,
-          mitra: "Rina",
-          jenisPelatihan: "Operator Alat Berat",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "aria",
-        },
-        {
-          no: 12,
-          mitra: "Rina",
-          jenisPelatihan: "Konstruksi",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "Indra",
-        },
-        {
-          no: 17,
-          mitra: "Rina",
-          jenisPelatihan: "Pertukangan",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "jono",
-          _rowVariant: "danger",
-        },
-        {
-          no: 20,
-          mitra: "Rina",
-          jenisPelatihan: "Operator Alat Berat",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "Rini",
-        },
-        {
-          no: 35,
-          mitra: "Rina",
-          jenisPelatihan: "Operator Alat Berat",
-          Tahun: "2020",
-          kategori: "umum",
-          pelatih: "roni",
-        },
-      ],
+      items: [],
+      pageId: 0,
       fields: [
         {
           key: "no",
@@ -237,32 +114,20 @@ export default {
           class: "text-center",
         },
         {
-          key: "mitra",
+          key: "nama",
           label: "Nama Mitra",
           sortable: true,
           sortDirection: "desc",
         },
         {
-          key: "jenisPelatihan",
-          label: "Program pelatihan",
+          key: "alamat",
+          label: "alamat",
           sortable: true,
           class: "text-center",
         },
         {
-          key: "Tahun",
-          label: "Tahun Lulus",
-          sortable: true,
-          class: "text-center",
-        },
-        {
-          key: "kategori",
-          label: "Kategori",
-          sortable: true,
-          class: "text-center",
-        },
-        {
-          key: "pelatih",
-          label: "pelatih",
+          key: "approval",
+          label: "Status",
           sortable: true,
           class: "text-center",
         },
@@ -303,6 +168,39 @@ export default {
           return { text: f.label, value: f.key };
         });
     },
+ },
+  methods:{
+    async getMitra(){
+      // let vm = this
+      let mitras = await axios.get(ipBackEnd + "users/list", {
+        headers:{
+          token: localStorage.getItem('token')
+        }
+      }).catch (error =>{
+        console.log(error)
+      })
+      this.items = mitras.data;
+      this.totalRows = this.items.length;
+      console.log(mitras);
+    },
+    details(idm){
+      router.push({path:`/profil/${idm}`})
+  },
+  onFiltered(filteredItems) {
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalRows = filteredItems.length
+      this.currentPage = 1
+    },
+    getStatus(status) {
+      if (status == 0) return "menunggu Verifikasi";
+      else if (status == 1) return "menunggu giliran";
+      else if (status == 2) return "selesai diperiksa";
+      else if (status == 3) return "cancel by user";
+    },
+  },
+  
+  created(){
+    this.getMitra()
   },
   mounted() {
     // Set the initial number of items

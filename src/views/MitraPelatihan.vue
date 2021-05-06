@@ -2,15 +2,15 @@
   <div>
     <div class="topengine">
       <div class="abc">
-        <!-- <router-link
-          to="/pelatihan"
+        <router-link
+          to="/AdminProposal"
           active-class="active"
           exact
           tag="button"
           class="side-btn"
         >
           <b-button class="back">KEMBALI</b-button>
-        </router-link> -->
+        </router-link>
       </div>
       <b-col lg="6" class="search my-1">
         <b-form-group
@@ -105,149 +105,15 @@
 </template>
 
 <script>
+import axios from "axios";
+import ipBackEnd from "../config";
 export default {
   data() {
     return {
-      items: [
-        {
-          no: 1,
-          mitra: "Budi",
-          jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
-          status: "70%",
-          pelatih: "aria",
-        },
-        {
-          no: 2,
-          mitra: "Budi",
-          jenisPelatihan: "Konstruksi",
-          jumlahPeserta: "15",
-          status: "50%",
-          pelatih: "Indra",
-        },
-        {
-          no: 3,
-          mitra: "Budi",
-          jenisPelatihan: "Pertukangan",
-          jumlahPeserta: "15",
-          status: "20%",
-          pelatih: "jono",
-          _rowVariant: "danger",
-        },
-        {
-          no: 4,
-          mitra: "Budi",
-          jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
-          status: "80%",
-          pelatih: "Rini",
-        },
-        {
-          no: 5,
-          mitra: "Budi",
-          jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
-          status: "90%",
-          pelatih: "roni",
-        },
-        {
-          no: 6,
-          mitra: "Jono",
-          jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
-          status: "70%",
-          pelatih: "aria",
-        },
-        {
-          no: 7,
-          mitra: "Jono",
-          jenisPelatihan: "Konstruksi",
-          jumlahPeserta: "15",
-          status: "50%",
-          pelatih: "Indra",
-        },
-        {
-          no: 13,
-          mitra: "Jono",
-          jenisPelatihan: "Pertukangan",
-          jumlahPeserta: "15",
-          status: "20%",
-          pelatih: "jono",
-          _rowVariant: "danger",
-        },
-        {
-          no: 8,
-          mitra: "Jono",
-          jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
-          status: "80%",
-          pelatih: "Rini",
-        },
-        {
-          no: 9,
-          mitra: "Jono",
-          jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
-          status: "90%",
-          pelatih: "roni",
-        },
-        {
-          no: 10,
-          mitra: "Rina",
-          jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
-          status: "70%",
-          pelatih: "aria",
-        },
-        {
-          no: 12,
-          mitra: "Rina",
-          jenisPelatihan: "Konstruksi",
-          jumlahPeserta: "15",
-          status: "50%",
-          pelatih: "Indra",
-        },
-        {
-          no: 17,
-          mitra: "Rina",
-          jenisPelatihan: "Pertukangan",
-          jumlahPeserta: "15",
-          status: "20%",
-          pelatih: "jono",
-          _rowVariant: "danger",
-        },
-        {
-          no: 20,
-          mitra: "Rina",
-          jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
-          status: "80%",
-          pelatih: "Rini",
-        },
-        {
-          no: 35,
-          mitra: "Rina",
-          jenisPelatihan: "Operator Alat Berat",
-          jumlahPeserta: "15",
-          status: "90%",
-          pelatih: "roni",
-        },
-      ],
+      items: [],
       fields: [
         {
-          key: "no",
-          label: "no",
-          sortable: true,
-          class: "text-center",
-        },
-        {
-          key: "mitra",
-          label: "Nama Mitra",
-          sortable: true,
-          sortDirection: "desc",
-        },
-        {
-          key: "jenisPelatihan",
+          key: "namaPelatihan",
           label: "Program pelatihan",
           sortable: true,
           class: "text-center",
@@ -264,22 +130,6 @@ export default {
           sortable: true,
           class: "text-center",
         },
-        {
-          key: "pelatih",
-          label: "pelatih",
-          sortable: true,
-          class: "text-center",
-        },
-        // {
-        //   key: 'isActive',
-        //   label: 'Is Active',
-        //   formatter: (value, key, item) => {
-        //     return value ? 'Yes' : 'No'
-        //   },
-        //   sortable: true,
-        //   sortByFormatted: true,
-        //   filterByFormatted: true
-        // },
         { key: "actions", label: "Actions" },
       ],
       totalRows: 1,
@@ -308,9 +158,37 @@ export default {
         });
     },
   },
+  created() {
+    this.getPelatihan();
+  },
   mounted() {
     // Set the initial number of items
     this.totalRows = this.items.length;
+  },
+  methods: {
+    onFiltered(filteredItems) {
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
+      console.log(this.totalRows, "cihuy");
+    },
+    async getPelatihan() {
+      let idm = localStorage.getItem("id");
+      console.log(idm);
+      let props = await axios
+        .get(ipBackEnd + `masterPelatihan/listByUserId/${idm}`, {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      console.log(props);
+      this.items = props.data;
+      this.totalRows = this.items.length;
+      console.log(this.items);
+    },
   },
   // methods: {
   //   info(item, index, button) {
@@ -322,12 +200,12 @@ export default {
   //     this.infoModal.title = ''
   //     this.infoModal.content = ''
   //   },
-  //   onFiltered(filteredItems) {
-  //     // Trigger pagination to update the number of buttons/pages due to filtering
-  //     this.totalRows = filteredItems.length
-  //     this.currentPage = 1
-  //   }
+  // onFiltered(filteredItems) {
+  //   // Trigger pagination to update the number of buttons/pages due to filtering
+  //   this.totalRows = filteredItems.length
+  //   this.currentPage = 1
   // }
+  //   }
 };
 </script>
 
@@ -339,7 +217,7 @@ export default {
 }
 .side-btn {
   border: none;
-  background-color: transparent;
+  background: transparent;
 }
 .abc {
   display: flex;

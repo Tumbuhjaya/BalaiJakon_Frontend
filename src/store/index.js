@@ -1,73 +1,66 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import axios from "axios"
-import ipBackEnd from "../config"
+import axios from "axios";
+import ipBackEnd from "../config";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    dataPelatihan:[],
-    dataSertifikasi:[],
-    dataProfil:[],
-    dataLowongan:[],
-    showSpinner:false
+    dataPelatihan: [],
+    dataSertifikasi: [],
+    dataProfil: [],
+    dataLowongan: [],
+    showSpinner: false,
   },
   mutations: {
-    SET_PROFIL(state, dataProfil){
-      state.dataProfil = dataProfil
+    SET_PROFIL(state, dataProfil) {
+      state.dataProfil = dataProfil;
     },
-    SET_DATAPELATIHAN(state, dataPelatihan){
-      state.dataPelatihan = dataPelatihan
+    SET_DATAPELATIHAN(state, dataPelatihan) {
+      state.dataPelatihan = dataPelatihan;
     },
-    SET_DATASERTIFIKASI(state, dataSertifikasi){
-      state.dataSertifikasi = dataSertifikasi
+    SET_DATASERTIFIKASI(state, dataSertifikasi) {
+      state.dataSertifikasi = dataSertifikasi;
     },
-    SET_DATALOWONGAN(state, dataLowongan){
-      state.dataLowongan = dataLowongan
+    SET_DATALOWONGAN(state, dataLowongan) {
+      state.dataLowongan = dataLowongan;
     },
-    SET_SPINNER(state, spinner){
-      state.showSpinner = spinner
-    }
-
+    SET_SPINNER(state, spinner) {
+      state.showSpinner = spinner;
+    },
   },
   actions: {
-    getProfil(){
+    getProfil() {
       axios
-      .get(ipBackEnd + "users/", {
-
-      })
-      .then(function (response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .get(ipBackEnd + "users/", {})
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    getPelatihan() {
+      axios
+        .get(ipBackEnd + "users/", {})
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    getSertifikasi() {
+      axios
+        .get(ipBackEnd + "users/", {})
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
   },
-  getPelatihan(){
-    axios
-      .get(ipBackEnd + "users/", {
-
-      })
-      .then(function (response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  },
-  getSertifikasi(){
-    axios
-      .get(ipBackEnd + "users/", {
-
-      })
-      .then(function (response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-},
   modules: {},
 });

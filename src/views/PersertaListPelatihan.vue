@@ -2,15 +2,7 @@
   <div>
     <div class="topengine">
       <div class="abc">
-        <router-link
-          to="/pesertaPelatihan"
-          active-class="active"
-          exact
-          tag="button"
-          class="side-btn"
-        >
-          <b-button class="back">KEMBALI</b-button>
-        </router-link>
+        <div @click="$router.go(-1)" class="back">KEMBALI</div>
       </div>
       <b-col lg="6" class="search my-1">
         <b-form-group

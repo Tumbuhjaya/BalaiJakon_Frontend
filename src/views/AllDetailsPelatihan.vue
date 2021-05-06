@@ -1,26 +1,15 @@
 <template>
-  <b-container fluid>
+  <div>
     <div class="topengine">
       <div class="abc">
         <router-link
-          to="/pelatihanMitra"
+          to="/AdminListPelatihan"
           active-class="active"
           exact
           tag="button"
           class="side-btn"
         >
           <b-button class="back">KEMBALI</b-button>
-        </router-link>
-      </div>
-      <div>
-        <router-link
-          to="/formPeserta"
-          active-class="active"
-          exact
-          tag="button"
-          class="side-btn"
-        >
-          <b-button class="back">TAMBAH PESERTA</b-button>
         </router-link>
       </div>
     </div>
@@ -39,7 +28,7 @@
                     type="email"
                     placeholder="SMK Pembangunan"
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -48,7 +37,7 @@
                     type="text"
                     placeholder="Jakarta"
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -59,7 +48,7 @@
                     type="text"
                     placeholder="SMK Pembangunan"
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -68,7 +57,7 @@
                     type="email"
                     placeholder="+62 0810000078 "
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -79,7 +68,7 @@
                     type="email"
                     placeholder="Operator Alat Berat"
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -88,11 +77,31 @@
                     type="email"
                     placeholder="Pemula"
                     required
-                    disabled: true
+                    disabled="true"
                     class="input"
                   ></b-form-input>
                 </b-form-group>
               </div>
+              <!-- <div class="box2 px-3 md-4 mb-4">
+                <b-form-group label="Kelurahan">
+                  <b-form-input
+                    type="email"
+                    placeholder="Sukorejo"
+                    required
+                    disabled="true"
+                    class="input"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group label="Kecamatan">
+                  <b-form-input
+                    type="email"
+                    placeholder="Gunungpati"
+                    required
+                    disabled="true"
+                    class="input"
+                  ></b-form-input>
+                </b-form-group>
+              </div> -->
               <div class="box2 px-3 md-4 mb-4">
                 <b-table
                   hover
@@ -115,22 +124,135 @@
         </b-row>
       </b-card>
     </b-row>
-  </b-container>
+  </div>
 </template>
 
 <script>
-import axios from "axios"
-import ipBackEnd from "../config"
 export default {
   data() {
     return {
-      items: [],
+      items: [
+        {
+          no: 1,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Rian",
+          kategori: "pemula",
+        },
+        {
+          no: 2,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Adi",
+          kategori: "pemula",
+        },
+        {
+          no: 3,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Rindaman",
+          kategori: "pemula",
+          _rowVariant: "danger",
+        },
+        {
+          no: 4,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Tejo",
+          kategori: "pemula",
+        },
+        {
+          no: 5,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Darmawan",
+          kategori: "pemula",
+        },
+        {
+          no: 6,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Khaliyah",
+          kategori: "pemula",
+        },
+        {
+          no: 7,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Salim",
+          kategori: "pemula",
+        },
+        {
+          no: 8,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Kiryu",
+          kategori: "pemula",
+          _rowVariant: "danger",
+        },
+        {
+          no: 9,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Jamingan",
+          kategori: "pemula",
+        },
+        {
+          no: 10,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Stefanus",
+          kategori: "pemula",
+        },
+        {
+          no: 11,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Ramlan",
+          kategori: "pemula",
+        },
+        {
+          no: 12,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Setyoko",
+          kategori: "pemula",
+        },
+        {
+          no: 13,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Asri",
+          kategori: "pemula",
+          _rowVariant: "danger",
+        },
+        {
+          no: 14,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Felicia",
+          kategori: "pemula",
+        },
+        {
+          no: 15,
+          mitra: "Budi",
+          programPelatihan: "Operator Alat Berat",
+          namaPeserta: "Imron",
+          kategori: "pemula",
+        },
+      ],
       fields: [
         {
           key: "no",
           label: "no",
           sortable: true,
           class: "text-center",
+        },
+        {
+          key: "mitra",
+          label: "Nama Mitra",
+          sortable: true,
+          sortDirection: "desc",
         },
         {
           key: "programPelatihan",
@@ -150,7 +272,23 @@ export default {
           sortable: true,
           class: "text-center",
         },
-        { key: "actions", label: "Actions" },
+        // {
+        //   key:"pelatih",
+        //   label:"pelatih",
+        //   sortable:true,
+        //   class:"text-center"
+        // },
+        // {
+        //   key: 'isActive',
+        //   label: 'Is Active',
+        //   formatter: (value, key, item) => {
+        //     return value ? 'Yes' : 'No'
+        //   },
+        //   sortable: true,
+        //   sortByFormatted: true,
+        //   filterByFormatted: true
+        // },
+        // { key: "actions", label: "Actions" },
       ],
       totalRows: 1,
       currentPage: 1,
@@ -182,28 +320,6 @@ export default {
     // Set the initial number of items
     this.totalRows = this.items.length;
   },
-  created(){
-    this.getPelatihan()
-  },
-  methods:{
-    async getPelatihan() {
-      let idm = localStorage.getItem("id");
-      console.log(idm);
-      let props = await axios
-        .get(ipBackEnd + `masterPelatihan/list/${idm}`, {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      console.log(props);
-      this.items = props.data;
-      this.totalRows = this.items.length;
-      console.log(this.items);
-    },
-  }
   // methods: {
   //   info(item, index, button) {
   //     this.infoModal.title = `Row index: ${index}`
@@ -228,38 +344,30 @@ export default {
   display: flex;
   justify-content: space-between;
   letter-spacing: 1px;
-  /* background-color: red; */
 }
 .side-btn {
   border: none;
-  background: transparent;
 }
 .abc {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   padding: 0;
   margin: 0%;
 }
-.c-title{
-  letter-spacing: 1.8px;
-}
 .box2 {
-  width: 100%;
   display: flex;
   flex-direction: row;
   position: relative;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: start;
   letter-spacing: 1px;
-  background: turquoise;
 }
 .box3 {
   display: flex;
   justify-content: space-between;
-  padding: 5%;
 }
 .input {
-  width: 125%;
+  width: 50vh;
   height: 50px;
   padding-left: 30px;
   margin-bottom: 20px;

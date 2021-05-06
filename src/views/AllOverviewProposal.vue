@@ -9,7 +9,7 @@
         class="side-btn"
       >
         <b-avatar size="5rem" class="total"></b-avatar>
-        <div>PENGAJUAN PROPOSAL PELATIHAN</div>
+        <div>PENGAJUAN PROPOSAL PELATIHAN</div> 
       </router-link>
       <router-link
         to="/ListProposal"
@@ -50,6 +50,7 @@
 import axios from "axios";
 import ipBackEnd from "../config";
 export default {
+  name:"overProp",
   data() {
     return {
       countPelatihan: 0,
