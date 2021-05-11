@@ -50,7 +50,21 @@
         small
         @filtered="onFiltered"
       >
-        <template #cell(actions)="{ item }">
+        <template #cell(nomor)="data">
+          {{ data.index + 1 }}
+        </template>
+        <template #cell(status)="data">
+          {{ getStatus(data.value) }}
+        </template>
+        <template #cell(actions)="{ item }" >
+          <b-button
+            size="sm"
+            variant="secondary"
+            class="mr-1"
+            @click="details(item.id)"
+          >
+            Detail
+          </b-button>
           <b-button
             size="sm"
             variant="success"
@@ -107,11 +121,18 @@
 <script>
 import axios from "axios";
 import ipBackEnd from "../config";
+import router from "../router";
 export default {
   data() {
     return {
       items: [],
       fields: [
+        {
+          key: "nomor",
+          label: "nomor",
+          sortable: true,
+          class: "text-center",
+        },
         {
           key: "namaPelatihan",
           label: "Program pelatihan",
@@ -159,7 +180,7 @@ export default {
     },
   },
   created() {
-    this.getProposal();
+    this.getPelatihan();
   },
   mounted() {
     // Set the initial number of items
@@ -172,9 +193,9 @@ export default {
       this.currentPage = 1;
       console.log(this.totalRows, "cihuy");
     },
-    async getProposal() {
-      let props = await axios
-        .get(ipBackEnd + `masterPelatihan/list`, {
+    async getPelatihan() {
+      let pels = await axios
+        .get(ipBackEnd + `masterPelatihan/listPelatihan23`, {
           headers: {
             token: localStorage.getItem("token"),
           },
@@ -182,7 +203,7 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
-      this.items = props.data.data;
+      this.items = pels.data;
       this.totalRows = this.items.length;
       console.log(this.items);
     },
@@ -235,6 +256,15 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
+    },
+    details(idm) {
+      router.push({ path: `/details/${idm}` });
+    },
+    getStatus(value) {
+      if (value == 0) return "menunggu Verifikasi";
+      else if (value == 1) return "Revisi";
+      else if (value == 2) return "Pengajuan Diterima";
+      else if (value == 3) return "Pengajuan Disetujui";
     },
   },
   // methods: {

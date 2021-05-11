@@ -2,9 +2,7 @@
   <div>
     <div class="topengine">
       <div class="abc">
-        <div class="abc">
-          <div @click="$router.go(-1)" class="back">KEMBALI</div>
-        </div>
+        <div @click="$router.go(-1)" class="back">KEMBALI</div>
       </div>
       <b-col lg="6" class="search my-1">
         <b-form-group
@@ -50,10 +48,24 @@
         small
         @filtered="onFiltered"
       >
+        <template #cell(nomor)="data">
+          {{ data.index + 1 }}
+        </template>
+        <template #cell(status)="data">
+          {{ getStatus(data.value) }}
+        </template>
         <template #cell(actions)="{ item }">
           <b-button
             size="sm"
-            variant="success"
+            variant="secondary"
+            class="mr-1"
+            @click="details(item.id)"
+          >
+            Lihat Detail
+          </b-button>
+          <b-button
+            size="sm"
+            variant="primary"
             class="mr-1"
             @click="terima(item.id)"
           >
@@ -61,7 +73,7 @@
           </b-button>
           <b-button
             size="sm"
-            variant="danger"
+            variant="warning"
             class="mr-1"
             @click="revisi(item.id)"
           >
@@ -107,29 +119,53 @@
 <script>
 import axios from "axios";
 import ipBackEnd from "../config";
+import router from "../router";
 export default {
   data() {
     return {
       items: [],
+      pageId: 0,
       fields: [
         {
-          key: "namaPelatihan",
-          label: "Program pelatihan",
+          key: "nomor",
+          label: "nomor",
           sortable: true,
           class: "text-center",
         },
         {
-          key: "jumlahPeserta",
-          label: "jumlahPeserta",
+          key: "namaPelatihan",
+          label: "Pelatihan",
+          sortable: true,
+          sortDirection: "desc",
+        },
+        {
+          key: "lokasi",
+          label: "lokasi",
+          sortable: true,
+          class: "text-center",
+        },
+        {
+          key: "tanggalPelatihan",
+          label: "Tanggal",
           sortable: true,
           class: "text-center",
         },
         {
           key: "status",
-          label: "Status",
+          label: "status",
           sortable: true,
           class: "text-center",
         },
+        // {
+        //   key: 'isActive',
+        //   label: 'Is Active',
+        //   formatter: (value, key, item) => {
+        //     return value ? 'Yes' : 'No'
+        //   },
+        //   sortable: true,
+        //   sortByFormatted: true,
+        //   filterByFormatted: true
+        // },
         { key: "actions", label: "Actions" },
       ],
       totalRows: 1,
@@ -158,64 +194,29 @@ export default {
         });
     },
   },
-  created() {
-    this.getProposal();
-  },
-  mounted() {
-    // Set the initial number of items
-    this.totalRows = this.items.length;
-  },
   methods: {
-    onFiltered(filteredItems) {
-      // Trigger pagination to update the number of buttons/pages due to filtering
-      this.totalRows = filteredItems.length;
-      this.currentPage = 1;
-      console.log(this.totalRows, "cihuy");
-    },
-    async getProposal() {
+    async getProps() {
+      // let vm = this
       let props = await axios
-        .get(ipBackEnd + `masterPelatihan/list`, {
+        .get(ipBackEnd + "MasterPelatihan/listPelatihan01", {
           headers: {
             token: localStorage.getItem("token"),
           },
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error);
         });
-      this.items = props.data.data;
+      this.items = props.data;
       this.totalRows = this.items.length;
-      console.log(this.items);
+      console.log(props);
     },
-    revisi(idp) {
-      console.log(idp);
+    details(idm) {
+      router.push({ path: `/profil/${idm}` });
+    },
+    terima(id) {
       axios
         .post(
-          ipBackEnd + `masterPelatihan/changeStatus/${idp}`,
-          {
-            status: 1,
-          },
-          {
-            headers: {
-              token: localStorage.getItem("token"),
-            },
-          }
-        )
-        .then(function (response) {
-          console.log(response);
-          // if(response.data.message){
-          // console.log(vm);
-          // vm.notif = response.data.message;
-          // }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
-    terima(idp) {
-      console.log(idp);
-      axios
-        .post(
-          ipBackEnd + `masterPelatihan/changeStatus/${idp}`,
+          ipBackEnd + `masterPelatihan/changeStatus/${id}`,
           {
             status: 2,
           },
@@ -225,17 +226,52 @@ export default {
             },
           }
         )
-        .then(function (response) {
-          console.log(response);
-          // if(response.data.message){
-          // console.log(vm);
-          // vm.notif = response.data.message;
-          // }
+        .then((res) => {
+          console.log(res);
         })
-        .catch(function (error) {
-          console.log(error);
+        .catch((err) => {
+          console.log(err);
         });
     },
+    Revisi(id) {
+      axios
+        .post(
+          ipBackEnd + `masterPelatihan/changeStatus/${id}`,
+          {
+            status: 1,
+          },
+          {
+            headers: {
+              token: localStorage.getItem("token"),
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    onFiltered(filteredItems) {
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
+    },
+    getStatus(value) {
+      if (value == 0) return "menunggu Verifikasi";
+      else if (value == 1) return "Revisi";
+      else if (value == 2) return "Pengajuan Diterima";
+      else if (value == 3) return "Pengajuan Disetujui";
+    },
+  },
+
+  created() {
+    this.getProps();
+  },
+  mounted() {
+    // Set the initial number of items
+    this.totalRows = this.items.length;
   },
   // methods: {
   //   info(item, index, button) {
@@ -247,12 +283,12 @@ export default {
   //     this.infoModal.title = ''
   //     this.infoModal.content = ''
   //   },
-  // onFiltered(filteredItems) {
-  //   // Trigger pagination to update the number of buttons/pages due to filtering
-  //   this.totalRows = filteredItems.length
-  //   this.currentPage = 1
-  // }
+  //   onFiltered(filteredItems) {
+  //     // Trigger pagination to update the number of buttons/pages due to filtering
+  //     this.totalRows = filteredItems.length
+  //     this.currentPage = 1
   //   }
+  // }
 };
 </script>
 

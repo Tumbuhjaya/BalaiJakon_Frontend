@@ -30,7 +30,7 @@
             </div>
           </router-link>
           <router-link
-            to="/AdminProposalPelatihan"
+            to="/viewPorposal"
             active-class="active"
             exact
             tag="button"
@@ -46,7 +46,7 @@
             </div>
           </router-link>
           <router-link
-            to="/AdminListPelatihan"
+            to="/listPelatihan"
             active-class="active"
             exact
             tag="button"

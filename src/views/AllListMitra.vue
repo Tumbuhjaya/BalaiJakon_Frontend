@@ -2,15 +2,9 @@
   <div>
     <div class="topengine">
       <div class="abc">
-        <!-- <router-link
-          to="/pelatihan"
-          active-class="active"
-          exact
-          tag="button"
-          class="side-btn"
-        >
-          <b-button class="back">KEMBALI</b-button>
-        </router-link> -->
+        <div class="abc">
+          <div @click="$router.go(-1)" class="back">KEMBALI</div>
+        </div>
       </div>
       <b-col lg="6" class="search my-1">
         <b-form-group
@@ -56,9 +50,30 @@
         small
         @filtered="onFiltered"
       >
-        <template #cell(actions)= " {item}">
-          <b-button size="sm" variant="secondary" class="mr-1" @click="details(item.id)">
+        <template #cell(actions)="{ item }">
+          <b-button
+            size="sm"
+            variant="secondary"
+            class="mr-1"
+            @click="details(item.id)"
+          >
             Lihat Detail
+          </b-button>
+          <b-button
+            size="sm"
+            variant="success"
+            class="mr-1"
+            @click="setujui(item.id)"
+          >
+            Terima
+          </b-button>
+          <b-button
+            size="sm"
+            variant="danger"
+            class="mr-1"
+            @click="tolak(item.id)"
+          >
+            Revisi
           </b-button>
         </template></b-table
       >
@@ -98,10 +113,11 @@
 </template>
 
 <script>
-import axios from "axios"
-import ipBackEnd from "../config"
-import router from "../router"
+import axios from "axios";
+import ipBackEnd from "../config";
+import router from "../router";
 export default {
+  name: "AllListMitra",
   data() {
     return {
       items: [],
@@ -168,28 +184,30 @@ export default {
           return { text: f.label, value: f.key };
         });
     },
- },
-  methods:{
-    async getMitra(){
+  },
+  methods: {
+    async getMitra() {
       // let vm = this
-      let mitras = await axios.get(ipBackEnd + "users/list", {
-        headers:{
-          token: localStorage.getItem('token')
-        }
-      }).catch (error =>{
-        console.log(error)
-      })
+      let mitras = await axios
+        .get(ipBackEnd + "users/list", {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       this.items = mitras.data;
       this.totalRows = this.items.length;
       console.log(mitras);
     },
-    details(idm){
-      router.push({path:`/profil/${idm}`})
-  },
-  onFiltered(filteredItems) {
+    details(idm) {
+      router.push({ path: `/profil/${idm}` });
+    },
+    onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
-      this.totalRows = filteredItems.length
-      this.currentPage = 1
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
     },
     getStatus(status) {
       if (status == 0) return "menunggu Verifikasi";
@@ -198,9 +216,9 @@ export default {
       else if (status == 3) return "cancel by user";
     },
   },
-  
-  created(){
-    this.getMitra()
+
+  created() {
+    this.getMitra();
   },
   mounted() {
     // Set the initial number of items

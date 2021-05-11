@@ -2,15 +2,7 @@
   <div>
     <div class="topengine">
       <div class="abc">
-        <router-link
-          to="/AdminListPelatihan"
-          active-class="active"
-          exact
-          tag="button"
-          class="side-btn"
-        >
-          <b-button class="back">KEMBALI</b-button>
-        </router-link>
+        <div @click="$router.go(-1)" class="back">KEMBALI</div>
       </div>
     </div>
     <b-row class="row px-3">
@@ -20,7 +12,7 @@
           <b-col md="" class="boxlogin">
             <b-card-body>
               <b-card-title class="c-title text-center md-4">
-                DETAIL PELATIHAN
+                DETAIL PELATIHAN A
               </b-card-title>
               <div class="box2 px-3 md-4 mb-4">
                 <b-form-group label="Mitra">
@@ -28,7 +20,7 @@
                     type="email"
                     placeholder="SMK Pembangunan"
                     required
-                    disabled="true"
+                    disable: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -37,7 +29,7 @@
                     type="text"
                     placeholder="Jakarta"
                     required
-                    disabled="true"
+                    disable: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -48,7 +40,7 @@
                     type="text"
                     placeholder="SMK Pembangunan"
                     required
-                    disabled="true"
+                    disable: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -57,7 +49,7 @@
                     type="email"
                     placeholder="+62 0810000078 "
                     required
-                    disabled="true"
+                    disable: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -68,7 +60,7 @@
                     type="email"
                     placeholder="Operator Alat Berat"
                     required
-                    disabled="true"
+                    disable: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -77,31 +69,15 @@
                     type="email"
                     placeholder="Pemula"
                     required
-                    disabled="true"
+                    disabled: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
               </div>
-              <!-- <div class="box2 px-3 md-4 mb-4">
-                <b-form-group label="Kelurahan">
-                  <b-form-input
-                    type="email"
-                    placeholder="Sukorejo"
-                    required
-                    disabled="true"
-                    class="input"
-                  ></b-form-input>
-                </b-form-group>
-                <b-form-group label="Kecamatan">
-                  <b-form-input
-                    type="email"
-                    placeholder="Gunungpati"
-                    required
-                    disabled="true"
-                    class="input"
-                  ></b-form-input>
-                </b-form-group>
-              </div> -->
+              <div>
+                <b-form-select v-model="selected" :options="pesertaO" @input="move()"></b-form-select>
+                 <div class="mt-3" v-for="(n,i) in item2" :key="i">Selected: <strong>{{ n.username }}</strong></div>
+              </div>
               <div class="box2 px-3 md-4 mb-4">
                 <b-table
                   hover
@@ -117,7 +93,12 @@
                   stacked="md"
                   show-empty
                   small
-                ></b-table>
+                  v-if="items.length !== 0"
+                >
+                  <template #cell(nomor)="data">
+                   {{ data.index + 1 }}
+                  </template>
+                </b-table>
               </div>
             </b-card-body>
           </b-col>
@@ -128,123 +109,19 @@
 </template>
 
 <script>
+import ipBackEnd from "../config"
+import axios from "axios"
 export default {
   data() {
     return {
-      items: [
-        {
-          no: 1,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Rian",
-          kategori: "pemula",
-        },
-        {
-          no: 2,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Adi",
-          kategori: "pemula",
-        },
-        {
-          no: 3,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Rindaman",
-          kategori: "pemula",
-          _rowVariant: "danger",
-        },
-        {
-          no: 4,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Tejo",
-          kategori: "pemula",
-        },
-        {
-          no: 5,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Darmawan",
-          kategori: "pemula",
-        },
-        {
-          no: 6,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Khaliyah",
-          kategori: "pemula",
-        },
-        {
-          no: 7,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Salim",
-          kategori: "pemula",
-        },
-        {
-          no: 8,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Kiryu",
-          kategori: "pemula",
-          _rowVariant: "danger",
-        },
-        {
-          no: 9,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Jamingan",
-          kategori: "pemula",
-        },
-        {
-          no: 10,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Stefanus",
-          kategori: "pemula",
-        },
-        {
-          no: 11,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Ramlan",
-          kategori: "pemula",
-        },
-        {
-          no: 12,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Setyoko",
-          kategori: "pemula",
-        },
-        {
-          no: 13,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Asri",
-          kategori: "pemula",
-          _rowVariant: "danger",
-        },
-        {
-          no: 14,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Felicia",
-          kategori: "pemula",
-        },
-        {
-          no: 15,
-          mitra: "Budi",
-          programPelatihan: "Operator Alat Berat",
-          namaPeserta: "Imron",
-          kategori: "pemula",
-        },
-      ],
+      items: [],
+      pesertaO:[],
+      selected:"",
+      item2:[],
       fields: [
         {
-          key: "no",
-          label: "no",
+          key: "nomor",
+          label: "nomor",
           sortable: true,
           class: "text-center",
         },
@@ -316,26 +193,43 @@ export default {
         });
     },
   },
+  created(){
+  this.getPeserta()
+  },
   mounted() {
     // Set the initial number of items
     this.totalRows = this.items.length;
   },
-  // methods: {
-  //   info(item, index, button) {
-  //     this.infoModal.title = `Row index: ${index}`
-  //     this.infoModal.content = JSON.stringify(item, null, 2)
-  //     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
-  //   },
-  //   resetInfoModal() {
-  //     this.infoModal.title = ''
-  //     this.infoModal.content = ''
-  //   },
-  //   onFiltered(filteredItems) {
-  //     // Trigger pagination to update the number of buttons/pages due to filtering
-  //     this.totalRows = filteredItems.length
-  //     this.currentPage = 1
-  //   }
-  // }
+  methods: {
+    async getPeserta(){
+      let peser = await axios
+        .get(ipBackEnd + `users/listPeserta`, {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        }).then(response =>{
+          console.log(response.data)
+          let yy = response.data
+          yy.forEach((y) =>{
+            this.ubahValue(y)
+          })
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      // this.pesertaO = peser.data;
+      console.log(peser);
+      console.log(this.pesertaO)
+    },
+    ubahValue(y){
+      this.pesertaO.push({value: y, text:y.username})
+    },
+    onFiltered(filteredItems) {
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalRows = filteredItems.length
+      this.currentPage = 1
+    }
+  }
 };
 </script>
 

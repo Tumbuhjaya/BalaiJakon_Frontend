@@ -18,7 +18,7 @@
       </router-link>
       <router-link
         to="/adminProposalPelatihan"
-        active-class="active" 
+        active-class="active"
         exact
         tag="button"
         class="side-btn"

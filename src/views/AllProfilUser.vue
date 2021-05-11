@@ -2,15 +2,9 @@
   <div>
     <div class="topengine">
       <div class="abc">
-        <router-link
-          to="/sertifikasiMitra"
-          active-class="active"
-          exact
-          tag="button"
-          class="side-btn"
-        >
-          <b-button class="back">KEMBALI</b-button>
-        </router-link>
+        <div class="abc">
+          <div @click="$router.go(-1)" class="back">KEMBALI</div>
+        </div>
       </div>
       <div>
         <router-link
@@ -31,7 +25,7 @@
           <b-col md="" class="boxlogin">
             <b-card-body>
               <b-card-title class="c-title text-center md-4">
-                DETAIL SERTIFIKASI
+                DETAIL PELATIHAN
               </b-card-title>
               <div class="box2 px-3 md-4 mb-4">
                 <b-form-group label="Mitra">
@@ -39,7 +33,7 @@
                     type="email"
                     placeholder="SMK Pembangunan"
                     required
-                    disabled="true"
+                    disabled: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -48,7 +42,7 @@
                     type="text"
                     placeholder="Jakarta"
                     required
-                    disabled="true"
+                    disabled: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -59,7 +53,7 @@
                     type="text"
                     placeholder="SMK Pembangunan"
                     required
-                    disabled="true"
+                    disabled: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -68,7 +62,7 @@
                     type="email"
                     placeholder="+62 0810000078 "
                     required
-                    disabled="true"
+                    disabled: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -79,7 +73,7 @@
                     type="email"
                     placeholder="Operator Alat Berat"
                     required
-                    disabled="true"
+                    disabled: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -88,7 +82,7 @@
                     type="email"
                     placeholder="Pemula"
                     required
-                    disabled="true"
+                    disabled: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -99,7 +93,7 @@
                     type="email"
                     placeholder="Sukorejo"
                     required
-                    disabled="true"
+                    disabled: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -108,7 +102,7 @@
                     type="email"
                     placeholder="Gunungpati"
                     required
-                    disabled="true"
+                    disabled: true
                     class="input"
                   ></b-form-input>
                 </b-form-group>
@@ -141,7 +135,7 @@
 <script>
 // import router from "../router"
 export default {
-  name:"profil",
+  name: "profil",
   data() {
     return {
       items: [],
@@ -221,30 +215,30 @@ export default {
         });
     },
   },
-  created(){
-    this.pageId = this.$route.params.id
-    console.log(this.pageId)
+  created() {
+    this.pageId = this.$route.params.id;
+    console.log(this.pageId);
   },
   mounted() {
     // Set the initial number of items
     this.totalRows = this.items.length;
   },
   methods: {
-  //   info(item, index, button) {
-  //     this.infoModal.title = `Row index: ${index}`
-  //     this.infoModal.content = JSON.stringify(item, null, 2)
-  //     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
-  //   },
-  //   resetInfoModal() {
-  //     this.infoModal.title = ''
-  //     this.infoModal.content = ''
-  //   },
+    //   info(item, index, button) {
+    //     this.infoModal.title = `Row index: ${index}`
+    //     this.infoModal.content = JSON.stringify(item, null, 2)
+    //     this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+    //   },
+    //   resetInfoModal() {
+    //     this.infoModal.title = ''
+    //     this.infoModal.content = ''
+    //   },
     onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
-      this.totalRows = filteredItems.length
-      this.currentPage = 1
-    }
-  }
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
+    },
+  },
 };
 </script>
 
@@ -263,6 +257,10 @@ export default {
   padding: 0;
   margin: 0%;
 }
+.c-title{
+  letter-spacing: 1.5px;
+  font-size: 200%;
+}
 .box2 {
   display: flex;
   flex-direction: row;
@@ -276,7 +274,7 @@ export default {
   justify-content: space-between;
 }
 .input {
-  width: 50vh;
+  width: 125%;
   height: 50px;
   padding-left: 30px;
   margin-bottom: 20px;

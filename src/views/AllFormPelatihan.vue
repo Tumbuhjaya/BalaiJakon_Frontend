@@ -1,15 +1,9 @@
 <template>
   <div>
     <div class="abc">
-      <router-link
-        to="/proposalMitra"
-        active-class="active"
-        exact
-        tag="button"
-        class="side-btn"
-      >
-        <div class="back">KEMBALI</div>
-      </router-link>
+      <div class="abc">
+        <div @click="$router.go(-1)" class="back">KEMBALI</div>
+      </div>
     </div>
     <div class="form container">
       <b-row class="row px-3">
@@ -57,7 +51,7 @@
                 </div>
                 <div class="box2 px-3 md-4 mb-4">
                   <b-form-input
-                    type="text"
+                    type="number"
                     placeholder="Jumlah Peserta"
                     tabindex="15"
                     class="input"
@@ -74,13 +68,18 @@
                   ></b-form-input>
                 </div>
                 <div class="box2 px-3 md-4 mb-4">
-                  <b-form-input
-                    type="text"
-                    placeholder="Tanggal Pelatihan"
-                    tabindex="15"
-                    class="input"
+                  <b-form-datepicker
+                    id="datepicker-dateformat2"
+                    @input="formatPicker()"
+                    :date-format-options="{
+                      day: 'numeric',
+                      month: 'numeric',
+                      year: 'numeric',
+                    }"
+                    locale="en"
                     v-model="tanggal"
-                  ></b-form-input>
+                    class="test"
+                  ></b-form-datepicker>
                 </div>
 
                 <div class="mb-12">
@@ -123,17 +122,23 @@ export default {
       pelatih: "",
       tanggal: "",
       UserId: "",
+      formatTanggal: "",
     };
   },
   components: {},
 
   methods: {
-    save(date) {
-      this.$refs.menu.save(date);
+    formatPicker: function () {
+      var vm = this;
+      var d = new Date(vm.tanggal);
+      vm.formatTanggal =
+        d.getUTCFullYear() + "/" + (d.getUTCMonth() + 1) + "/" + d.getUTCDate();
     },
     regisPelatihan() {
       let vm = this;
       let id = localStorage.getItem("id");
+      console.log(id);
+      console.log(vm.formatTanggal);
       // console.log(token)
       axios
         .post(
@@ -142,7 +147,7 @@ export default {
             userId: id,
             namaPelatihan: vm.namaPelatihan,
             jumlahPeserta: vm.jumlah,
-            tanggalPelatihan: vm.tanggal,
+            tanggalPelatihan: vm.formatTanggal,
             lokasi: vm.lokasi,
             pelatih: vm.pelatih,
           },
@@ -154,6 +159,7 @@ export default {
         )
         .then(function (response) {
           console.log(response);
+          console.log();
           // if(response.data.message){
           // console.log(vm);
           // vm.notif = response.data.message;
@@ -162,11 +168,6 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
-    },
-  },
-  watch: {
-    menu(val) {
-      val && setTimeout(() => (this.$refs.picker.activePicker = "YEAR"));
     },
   },
 };

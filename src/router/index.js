@@ -24,40 +24,61 @@ const routes = [
   {
     path: "/dashboard",
     component: Dashboard,
-    children:[
+    children: [
       {
-        path:"/OverPorposal",
-        component:()=>
-        import ("../views/AllOverviewProposal.vue")
+        path: "/viewPorposal",
+        component: () => import("../views/AllOverviewProposal.vue"),
       },
       {
-        path:"/listMitra",
-        component:()=>
-        import ("../views/AllListMitra.vue")
+        path: "/listMitra",
+        component: () => import("../views/AllListMitra.vue"),
       },
       {
-        path:"/detailPelatihan",
-        component:()=>
-        import ("../views/AllDetailsPelatihan.vue")
+        path: "/listProps",
+        component: () => import("../views/AllListProposal.vue"),
       },
       {
-        path:"/profil/:id",
-        component:()=>
-        import ("../views/AllProfilUser.vue"),
-        beforeRouteUpdate(to, from, next){
-          if (to.path == "/profil/:id"){
+        path: "/listPelatihan",
+        component: () => import("../views/AllPelatihan.vue"),
+      },
+      {
+        path: "/details",
+        component: () => import("../views/AllDetailsPelatihan.vue"),
+      },
+      {
+        path: "/details/:id",
+        component: () => import("../views/AllDetailsPelatihan.vue"),
+        beforeRouteUpdate(to, from, next) {
+          if (to.path == "/details/:id") {
             next({
-              path:"/profil"
-            })
+              path: "/details",
+            });
           }
-        }
+        },
       },
       {
-        path:"/profil",
-        componet:() =>
-        import("../views/AllProfilUser.vue")
-      }
-    ]
+        path: "/formProposal",
+        component: () =>
+          import(
+            /* webpackChunkName: "riwayat" */ "../views/AllFormPelatihan.vue"
+          ),
+      },
+      {
+        path: "/profil/:id",
+        component: () => import("../views/AllProfilUser.vue"),
+        beforeRouteUpdate(to, from, next) {
+          if (to.path == "/profil/:id") {
+            next({
+              path: "/profil",
+            });
+          }
+        },
+      },
+      {
+        path: "/profil",
+        componet: () => import("../views/AllProfilUser.vue"),
+      },
+    ],
   },
   {
     path: "/dashboardMitra",
@@ -108,13 +129,7 @@ const routes = [
             /* webpackChunkName: "riwayat" */ "../views/MitraListProposal2.vue"
           ),
       },
-      {
-        path: "/formProposal",
-        component: () =>
-          import(
-            /* webpackChunkName: "riwayat" */ "../views/MitraFormProposal.vue"
-          ),
-      },
+
       {
         path: "/formProposal2",
         component: () =>
@@ -406,8 +421,5 @@ router.beforeEach((to, from, next) => {
     }
   }
 });
-
- 
-
 
 export default router;

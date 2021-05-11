@@ -9,10 +9,10 @@
         class="side-btn"
       >
         <b-avatar size="5rem" class="total"></b-avatar>
-        <div>PENGAJUAN PROPOSAL PELATIHAN</div> 
+        <div>PENGAJUAN PROPOSAL PELATIHAN</div>
       </router-link>
       <router-link
-        to="/ListProposal"
+        to="/listProps"
         active-class="active"
         exact
         tag="button"
@@ -46,11 +46,11 @@
     </b-card-group>
   </div>
 </template>
+
 <script>
 import axios from "axios";
 import ipBackEnd from "../config";
 export default {
-  name:"overProp",
   data() {
     return {
       countPelatihan: 0,
@@ -61,28 +61,20 @@ export default {
   },
   created() {
     this.getcount();
+    console.log("uhuy");
   },
   methods: {
     getcount() {
       let vm = this;
-      let idm = localStorage.getItem("id");
+      // let idm = localStorage.getItem("id");
       axios
-        .get(ipBackEnd + `masterPelatihan/listByUserId/${idm}`, {
+        .get(ipBackEnd + `masterPelatihan/listPelatihan01`, {
           headers: {
             token: localStorage.getItem("token"),
           },
         })
         .then(function (response) {
-          let data = response.data;
-          for (let i = 0; i < data.length; i++) {
-            if (data[i].status == 0 || data[i].status == 1) {
-              vm.countPelatihan++;
-            }
-            // else if (data[i].status == 2 || data[i].status == 3){
-            //   vm.countPelatihan2 ++
-            // }
-          }
-          console.log(response.data);
+          vm.countPelatihan = response.data.length;
         })
         .catch(function (error) {
           console.log(error);
